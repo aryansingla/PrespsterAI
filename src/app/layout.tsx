@@ -20,6 +20,7 @@ import { SessionProvider } from "next-auth/react";
 import { IconCircleXFilled } from "@tabler/icons-react";
 import { ToastContainer } from "./nextToast";
 import 'react-toastify/dist/ReactToastify.css';
+import theme from "@/theme";
 
 export const MyApp = ({ children }: { children: React.ReactNode }) => {
   // const theme = ThemeSettings();
@@ -64,10 +65,12 @@ export default function RootLayout({
                 flexWrap: "nowrap",
               }}
             > */}
+            <ThemeProvider theme={theme}>
               <MyApp>
                 {children}
                 <ToastContainer />
               </MyApp>
+              </ThemeProvider>
             {/* </SnackbarProvider>
           </Provider> */}
         </SessionProvider>
