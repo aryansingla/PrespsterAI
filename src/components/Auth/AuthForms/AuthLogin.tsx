@@ -10,6 +10,7 @@ import {
     Dialog,
     DialogContent,
     CardContent,
+    Divider,
 } from "@mui/material";
 import Grid from '@mui/material/Grid2';
 
@@ -27,6 +28,7 @@ import FormikTextFieldPassword from "@/components/common/FormComponents/FormikTe
 // import passCheck from "@/helper/passCheck";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import Image from "next/image";
 
 function AuthLogin() {
     //   const API_URL = getApiUrl();
@@ -132,110 +134,147 @@ function AuthLogin() {
 
     return (
         <>
-            <Formik
-                enableReinitialize
-                initialValues={initialValues}
-                onSubmit={handleLogin}
-                validationSchema={Yup.object({
-                    email: Yup.string().email().required("Email Required"),
-                    password: Yup.string().required("Password Required"),
-                })}
-            >
-                {({ handleSubmit, errors }) => {
-                    return (
-                        <Container>
-                            <Form onSubmit={handleSubmit} autoComplete="off">
-                                <div style={{ display: "none" }}>
-                                    <input
-                                        type="text"
-                                        id="subdomain-name"
-                                        readOnly
-                                        tabIndex={-1}
-                                    />
-                                    <input
-                                        type="password"
-                                        id="subdomain-password"
-                                        readOnly
-                                        tabIndex={-1}
-                                    />
-                                </div>
-                                <Grid container spacing={1}>
-                                    <Grid size={{ xs: 12 }}>
-                                        <FormikTextField
-                                            fullWidth
-                                            size="medium"
-                                            name="email"
-                                            value={email}
-                                            mandatory={true}
-                                            label="Email"
-                                            autoComplete="off"
-                                            disabled={loading}
-                                            handleChange={handleEmailChange}
+          <Box sx={{ textAlign: 'center' }}> {/* Changed to 'center' */}
+    <Typography variant="h5" sx={{fontWeight:'600'}}>PREPSTER AI</Typography>
+    <Typography variant="h5" sx={{ marginTop: '15px',textAlign: 'left' }}>Login</Typography> {/* Keeping the 'Login' text left-aligned */}
+    <Typography variant="subtitle1" sx={{ fontWeight: '200', textAlign: 'left' }}>Unlock Your Potential – Login to Continue</Typography>
+</Box>
+            <Box sx={{ marginTop: '15px' }}>
+                <Formik
+                    enableReinitialize
+                    initialValues={initialValues}
+                    onSubmit={handleLogin}
+                    validationSchema={Yup.object({
+                        email: Yup.string().email().required("Email Required"),
+                        password: Yup.string().required("Password Required"),
+                    })}
+                >
+                    {({ handleSubmit, errors }) => {
+                        return (
+                            <Container>
+                                <Form onSubmit={handleSubmit} autoComplete="off">
+                                    <div style={{ display: "none" }}>
+                                        <input
+                                            type="text"
+                                            id="subdomain-name"
+                                            readOnly
+                                            tabIndex={-1}
                                         />
-                                    </Grid>
-                                    <Grid size={{ xs: 12 }}>
-                                        <FormikTextFieldPassword
-                                            fullWidth
-                                            size="medium"
-                                            name="password"
-                                            value={password}
-                                            mandatory={true}
-                                            label="Password"
-                                            disabled={loading}
-                                            autoComplete="new-password"
-                                            handleChange={handlePasswordChange}
+                                        <input
+                                            type="password"
+                                            id="subdomain-password"
+                                            readOnly
+                                            tabIndex={-1}
                                         />
+                                    </div>
+                                    <Grid container spacing={1}>
+                                        <Grid size={{ xs: 12 }}>
+                                            <FormikTextField
+                                                fullWidth
+                                                size="medium"
+                                                name="email"
+                                                value={email}
+                                                mandatory={true}
+                                                label="Email"
+                                                autoComplete="off"
+                                                disabled={loading}
+                                                handleChange={handleEmailChange}
+                                            />
+                                        </Grid>
+                                        <Grid size={{ xs: 12 }}>
+                                            <FormikTextFieldPassword
+                                                fullWidth
+                                                size="medium"
+                                                name="password"
+                                                value={password}
+                                                mandatory={true}
+                                                label="Password"
+                                                disabled={loading}
+                                                autoComplete="new-password"
+                                                handleChange={handlePasswordChange}
+                                            />
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                                {/* <Stack
-                      justifyContent="flex-end"
-                      direction="row"
-                      alignItems="center"
-                      mb={2}
-                    >
-                      <Typography
-                        component={Link}
-                        // href={`${SITE_URL}/auth/forgot-password`}
-                        href={forgotPasswordUrl}
-                        fontWeight="500"
-                        sx={{
-                          textDecoration: "none",
-                          color: "primary.main",
-                        }}
-                      >
-                        Forgot Password ?
-                      </Typography>
-                    </Stack> */}
-                                <Box>
-                                    <Button
-                                        color="primary"
-                                        variant="contained"
-                                        size="large"
-                                        fullWidth
-                                        type="submit"
-                                        disabled={loading}
+                                    <Stack
+                                        justifyContent="flex-end"
+                                        direction="row"
+                                        alignItems="center"
+                                        mb={2}
                                     >
-                                        {loading ? (
-                                            <CircularProgress size={20} />
-                                        ) : (
-                                            "Login"
-                                        )}
-                                    </Button>
-                                </Box>
-                            </Form>
-                        </Container>
-                    );
+                                        <Typography
+                                            component={Link}
+                                            // href={`${SITE_URL}/auth/forgot-password`}
+                                            href={forgotPasswordUrl}
+                                            fontWeight="500"
+                                            sx={{
+                                                textDecoration: "none",
+                                                color: "#2663eb",
+                                            }}
+                                        >
+                                            Forgot Password ?
+                                        </Typography>
+                                    </Stack>
+                                    <Box>
+                                        <Button
+                                            // color="primary"
+                                            variant="contained"
+                                            size="large"
+                                            fullWidth
+                                            type="submit"
+                                            disabled={loading}
+                                            sx={{
+                                                backgroundColor: '#2663eb',
+                                                color: '#fff'
+                                            }}
+                                        >
+                                            {loading ? (
+                                                <CircularProgress size={20} />
+                                            ) : (
+                                                "Login"
+                                            )}
+                                        </Button>
+                                    </Box>
+                                </Form>
+                            </Container>
+                        );
+                    }}
+                </Formik>
+            </Box>
+            <Divider sx={{ marginY: 3 }}>Or Login with</Divider>
+            <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+            <Button
+                variant="outlined"
+                disabled={loading}
+                startIcon={
+                    <Image
+                        src="/google-logo-2.png"
+                        alt="Google logo"
+                        width={40}
+                        height={20}
+                    />
+                }
+                sx={{
+                    textTransform: "none",
+                    borderRadius: "25px", // Rounded border
+                    color: "text.primary",
+                    borderColor: "text.primary",
+                    "&:hover": {
+                        borderColor: "text.primary",
+                    }
                 }}
-            </Formik>
+            >
+                Sign In with Google
+            </Button>
+            </Box>
             <Stack
                 direction="row"
                 spacing={1}
-                sx={{ marginTop: "10px" }}
+                sx={{ marginTop: "40px", justifyContent: "center", alignItems: "center", textAlign: "center" }} // Aligning both vertically and horizontally
             >
                 <Typography
                     color="textSecondary"
                     variant="h6"
-                    fontWeight="400"
+                    fontWeight="500"
                 >
                     New here ?
                 </Typography>
@@ -245,12 +284,14 @@ function AuthLogin() {
                     fontWeight="500"
                     sx={{
                         textDecoration: "none",
-                        color: "primary.main",
+                        color: "#2663eb",
                     }}
                 >
                     Sign Up
                 </Typography>
             </Stack>
+
+
         </>
 
     );

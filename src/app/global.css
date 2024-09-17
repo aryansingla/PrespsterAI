@@ -17,6 +17,6 @@ html {
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: #ccc;
+    background-color: #000;
     border-radius: 8px;
 }

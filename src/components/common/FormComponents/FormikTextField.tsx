@@ -25,6 +25,7 @@ const FormikTextField = (props:any) => {
                 value={props.value}
                 disabled={props.disabled}
                 onChange={props.handleChange}
+                
                 placeholder={props.placeholder}
                 inputProps={props.inputProps}
                 InputProps = {{
@@ -40,6 +41,7 @@ const FormikTextField = (props:any) => {
                     '& .MuiFormHelperText-root' : {
                         display : 'none'
                     }
+                    
                 }}
             />
             <FormikErrorMessage

@@ -19,6 +19,7 @@ function Login({ user }) {
       container
       spacing={0}
       justifyContent="center"
+      alignItems="center" 
       sx={{ height: "100vh" }}
     >
       <Grid
@@ -28,11 +29,14 @@ function Login({ user }) {
           sx={{
             position: "relative",
             width: "100%",
+            display:'flex',
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <Card
             elevation={9}
-            sx={{ p: 3, zIndex: 1, width: "100%", maxWidth: "100%" }}
+            sx={{ p: 3, zIndex: 1, width: "100%", maxWidth: "100%", }}
           >
             <AuthLogin/>
           </Card>
