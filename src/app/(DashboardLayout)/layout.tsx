@@ -67,6 +67,7 @@ export default function RootLayout({
         display: "flex",
         minHeight: "100vh",
         width: "100%",
+        backgroundColor:'black'
       }}
     >
       {
