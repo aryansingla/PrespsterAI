@@ -11,6 +11,7 @@ import {
     DialogContent,
     CardContent,
     Divider,
+    useMediaQuery
 } from "@mui/material";
 import Grid from '@mui/material/Grid2';
 
@@ -37,6 +38,7 @@ function AuthLogin() {
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [forgotPasswordUrl, setForgotPasswordUrl] = useState("");
+        const isScreenSmall = useMediaQuery('(max-width:600px)');
 
     //   useEffect(() => {
     //     const res = passCheck(newPassword);
@@ -137,7 +139,7 @@ function AuthLogin() {
           <Box sx={{ textAlign: 'center' }}> {/* Changed to 'center' */}
     <Typography variant="h5" sx={{fontWeight:'600'}}>PREPSTER AI</Typography>
     <Typography variant="h5" sx={{ marginTop: '15px',textAlign: 'left' }}>Login</Typography> {/* Keeping the 'Login' text left-aligned */}
-    <Typography variant="subtitle1" sx={{ fontWeight: '200', textAlign: 'left' }}>Unlock Your Potential – Login to Continue</Typography>
+    <Typography  variant={isScreenSmall ? "subtitle2" : "subtitle1"} sx={{ fontWeight: '200', textAlign: 'left' }}>Unlock Your Potential – Login to Continue</Typography>
 </Box>
             <Box sx={{ marginTop: '15px' }}>
                 <Formik
@@ -240,7 +242,7 @@ function AuthLogin() {
                     }}
                 </Formik>
             </Box>
-            <Divider sx={{ marginY: 3 }}>Or Login with</Divider>
+            <Divider sx={{ marginY: 3 }}>OR</Divider>
             <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
             <Button
                 variant="outlined"
@@ -267,16 +269,16 @@ function AuthLogin() {
             </Button>
             </Box>
             <Stack
-                direction="row"
+                direction={isScreenSmall ? "column" : "row"}
                 spacing={1}
                 sx={{ marginTop: "40px", justifyContent: "center", alignItems: "center", textAlign: "center" }} // Aligning both vertically and horizontally
             >
                 <Typography
                     color="textSecondary"
-                    variant="h6"
+                    variant={isScreenSmall ? "subtitle1" : "h6"}
                     fontWeight="500"
                 >
-                    New here ?
+                   Don't have an account ?
                 </Typography>
                 <Typography
                     component={Link}
