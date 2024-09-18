@@ -19,7 +19,7 @@ export default async function Register2() {
         position: "relative",
         "&:before": {
           content: '""',
-          background: "radial-gradient(#d2f1df, #d3d7fa, #bad8f4)",
+          background: "black",
           backgroundSize: "400% 400%",
           animation: "gradient 15s ease infinite",
           position: "absolute",

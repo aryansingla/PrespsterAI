@@ -38,7 +38,7 @@ function AuthLogin() {
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [forgotPasswordUrl, setForgotPasswordUrl] = useState("");
-        const isScreenSmall = useMediaQuery('(max-width:600px)');
+    const isScreenSmall = useMediaQuery('(max-width:600px)');
 
     //   useEffect(() => {
     //     const res = passCheck(newPassword);
@@ -136,11 +136,11 @@ function AuthLogin() {
 
     return (
         <>
-          <Box sx={{ textAlign: 'center' }}> {/* Changed to 'center' */}
-    <Typography variant="h5" sx={{fontWeight:'600'}}>PREPSTER AI</Typography>
-    <Typography variant="h5" sx={{ marginTop: '15px',textAlign: 'left' }}>Login</Typography> {/* Keeping the 'Login' text left-aligned */}
-    <Typography  variant={isScreenSmall ? "subtitle2" : "subtitle1"} sx={{ fontWeight: '200', textAlign: 'left' }}>Unlock Your Potential – Login to Continue</Typography>
-</Box>
+            <Box sx={{ textAlign: 'center' }}> {/* Changed to 'center' */}
+                <Typography variant="h5" sx={{ fontWeight: '600' }}>PREPSTER AI</Typography>
+                <Typography variant="h5" sx={{ marginTop: '15px', textAlign: 'left' }}>Login</Typography> {/* Keeping the 'Login' text left-aligned */}
+                <Typography variant={isScreenSmall ? "subtitle2" : "subtitle1"} sx={{ fontWeight: '200', textAlign: 'left', fontSize: isScreenSmall? '15px' : 'inherit' }}>Unlock Your Potential – Login to Continue</Typography>
+            </Box>
             <Box sx={{ marginTop: '15px' }}>
                 <Formik
                     enableReinitialize
@@ -243,30 +243,30 @@ function AuthLogin() {
                 </Formik>
             </Box>
             <Divider sx={{ marginY: 3 }}>OR</Divider>
-            <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-            <Button
-                variant="outlined"
-                disabled={loading}
-                startIcon={
-                    <Image
-                        src="/google-logo-2.png"
-                        alt="Google logo"
-                        width={40}
-                        height={20}
-                    />
-                }
-                sx={{
-                    textTransform: "none",
-                    borderRadius: "25px", // Rounded border
-                    color: "text.primary",
-                    borderColor: "text.primary",
-                    "&:hover": {
-                        borderColor: "text.primary",
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Button
+                    variant="outlined"
+                    disabled={loading}
+                    startIcon={
+                        <Image
+                            src="/google-logo-2.png"
+                            alt="Google logo"
+                            width={40}
+                            height={20}
+                        />
                     }
-                }}
-            >
-                Sign In with Google
-            </Button>
+                    sx={{
+                        textTransform: "none",
+                        borderRadius: "25px", // Rounded border
+                        color: "text.primary",
+                        borderColor: "text.primary",
+                        "&:hover": {
+                            borderColor: "text.primary",
+                        }
+                    }}
+                >
+                    Sign In with Google
+                </Button>
             </Box>
             <Stack
                 direction={isScreenSmall ? "column" : "row"}
@@ -278,7 +278,7 @@ function AuthLogin() {
                     variant={isScreenSmall ? "subtitle1" : "h6"}
                     fontWeight="500"
                 >
-                   Don't have an account ?
+                    Don't have an account ?
                 </Typography>
                 <Typography
                     component={Link}

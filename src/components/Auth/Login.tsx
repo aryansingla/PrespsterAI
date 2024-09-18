@@ -23,7 +23,7 @@ function Login({ user }) {
       sx={{ height: "100vh" }}
     >
       <Grid
-        size={{ xs: 11, sm: 11, lg: 4, xl: 4 }}
+        size={{ xs: 11, sm: 11, lg: 6, xl: 6 }}
       >
         <Box
           sx={{

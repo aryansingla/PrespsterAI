@@ -39,7 +39,7 @@ const DashboardLowerPortion = () => {
                 })
                 .catch((error) => {
                     setLoading(false);
-                    toast.error(`${error?.response?.data?.message}` ,{
+                    toast.info(`${error?.response?.data?.message}` ,{
                         position: "bottom-left",
                         autoClose: 5000,
                         hideProgressBar: false,
