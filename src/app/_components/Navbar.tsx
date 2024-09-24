@@ -244,7 +244,7 @@ function Navbar() {
                     <Box>
                         <MenuIcon
                             onClick={toggleDrawer(true)}
-                            sx={{ fontSize: 40, display: isScreenSmall ? 'flex' : 'none' }} />
+                            sx={{ fontSize: 40, display: isScreenSmall ? 'flex' : 'none',cursor:'pointer' }} />
                     </Box>
 
 
