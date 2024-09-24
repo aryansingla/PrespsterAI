@@ -1,13 +1,15 @@
 "use client"
-import { Typography } from '@mui/material'
+import { Box, Typography, useMediaQuery } from '@mui/material'
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid2';
 import InterviewItemCard from './InterviewItemCard';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import Image from 'next/image';
 
 const DashboardLowerPortion = () => {
+  const isMobileScreen = useMediaQuery('(max-width:600px)');
   const session1 = useSession();
   const userDetails = session1?.data?.user;
 
@@ -58,9 +60,9 @@ const DashboardLowerPortion = () => {
 
 
   return (
-    <div style={{ padding: '0px 50px' }}>
+    <div style={{ padding: isMobileScreen ? '0px' : '0px 50px' , marginTop:'50px'}}>
         <div style={{marginTop:'30px'}}>
-        <Typography variant="h4" sx={{ color: '#6a91e6', fontWeight: 600 }}>
+        <Typography variant={isMobileScreen ? "h5" : "h4"} sx={{ color: '#6a91e6', fontWeight: 600 }}>
         Past Mock Interviews
             </Typography>
         </div>
@@ -71,8 +73,29 @@ const DashboardLowerPortion = () => {
                     </Grid>
                 ))
               :
-              <Typography color="#fff">No past mock interviews found.</Typography>
+              <Box>
+                <Image src={'/nodatafound.avif'} width={400} height={400} style={{ position: 'absolute' }} alt="no-data-found" />
+              </Box>
               }
+
+<Box
+  sx={{
+    background: 'linear-gradient(to bottom right, #ded9d8, #193067)',
+    width: '80%',
+    height: '400px',
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center',
+    
+  }}
+>
+  <Image
+    src={'/no-data-found.png'}
+    width={500}
+    height={400}
+    alt="no-data-found"
+  />
+</Box>
             </Grid>
     </div>
   )

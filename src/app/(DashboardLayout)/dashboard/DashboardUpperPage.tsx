@@ -1,5 +1,5 @@
 "use client"
-import { Box, Button, CircularProgress, Container, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, Container, Typography, useMediaQuery } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { signOut, useSession } from "next-auth/react";
@@ -21,6 +21,9 @@ import { useRouter } from 'next/navigation';
 
 
 const DashboardUpperPage = () => {
+    const isScreenSmall = useMediaQuery('(max-width:1080px)');
+    const isMobileScreen = useMediaQuery('(max-width:600px)');
+
     const router = useRouter();
     const session1 = useSession();
     const userDetails = session1?.data?.user;
@@ -118,7 +121,7 @@ const DashboardUpperPage = () => {
 
     return (
         <>
-            <div style={{ padding: '0px 50px' }}>
+            <div style={{ padding: isMobileScreen ? '0px' : '0px 50px' }}>
                 <Grid container spacing={2}>
                     {/* Dashboard Heading */}
                     <Grid size={{ xs: 12, md: 6 }}>
@@ -127,7 +130,7 @@ const DashboardUpperPage = () => {
                                 Dashboard
                             </Typography>
                             <div style={{ color: '#fff', marginTop: '10px' }}>
-                                <Typography variant="h6" sx={{ color: '#fff', fontWeight: 300 }}>
+                                <Typography variant={isScreenSmall ? "body1" : "h6"} sx={{ color: '#fff', fontWeight: 300 }}>
                                     Create and Start your AI Mock Interview.
                                 </Typography>
                             </div>
@@ -135,7 +138,7 @@ const DashboardUpperPage = () => {
                     </Grid>
 
                     {/* Add New Box */}
-                    <Grid size={{ xs: 12, md: 6 }}>
+                    <Grid size={{ xs: 12, md: 6}}>
                         <div
                             style={{
                                 width: '100%', // Full width inside the grid
