@@ -84,86 +84,62 @@ const DashboardLowerPortion = () => {
                     loading ?
                         (
                             <Grid container sx={{ padding: '50px' }}>
-                                <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                                    <Card sx={{ maxWidth: 400, m: 2, backgroundColor: '#d2d4d8', color: '#fff' }}>
-                                        {/* <CardHeader
-                                            title={
-                                                <Skeleton
-                                                    animation="wave"
-                                                    height={10}
-                                                    width="80%"
-                                                    style={{ marginBottom: 6 }}
-                                                />
-                                            }
-                                            subheader={<Skeleton animation="wave" height={10} width="40%" />}
-                                        /> */}
-                                        {<Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
-                                        }
-                                        <CardContent>
-                                            {
-                                                <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                                                    <Skeleton animation="wave" height={30} width="45%" />
-                                                    <Skeleton animation="wave" height={30} width="45%" />
-                                                </Box>
-                                            }
-                                        </CardContent>
-                                    </Card>
-                                </Grid>
-                                <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                                    <Card sx={{ maxWidth: 400, m: 2, backgroundColor: '#d2d4d8', color: '#fff' }}>
-                                        {/* <CardHeader
-                                            title={
-                                                <Skeleton
-                                                    animation="wave"
-                                                    height={10}
-                                                    width="80%"
-                                                    style={{ marginBottom: 6 }}
-                                                />
-                                            }
-                                            subheader={<Skeleton animation="wave" height={10} width="40%" />}
-                                        /> */}
-                                        {<Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
-                                        }
-                                        <CardContent>
-                                            {
-                                                <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                                                    <Skeleton animation="wave" height={30} width="45%" />
-                                                    <Skeleton animation="wave" height={30} width="45%" />
-                                                </Box>
-                                            }
-                                        </CardContent>
-                                    </Card>
-                                </Grid>
-                                <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                                    <Card sx={{ maxWidth: 400, m: 2, backgroundColor: '#d2d4d8', color: '#fff' }}>
-                                        {/* <CardHeader
-                                            title={
-                                                <Skeleton
-                                                    animation="wave"
-                                                    height={10}
-                                                    width="80%"
-                                                    style={{ marginBottom: 6 }}
-                                                />
-                                            }
-                                            subheader={<Skeleton animation="wave" height={10} width="40%" />}
-                                        /> */}
-                                        {<Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
-                                        }
-                                        <CardContent>
-                                            {
-                                                <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                                                    <Skeleton animation="wave" height={30} width="45%" />
-                                                    <Skeleton animation="wave" height={30} width="45%" />
-                                                </Box>
-                                            }
-                                        </CardContent>
-                                    </Card>
-                                </Grid>
-                            </Grid>
+            {/* Conditional rendering based on screen size */}
+            {isMobileScreen ? (
+                <Grid size={12}>
+                    <Card sx={{ maxWidth: 600, m: 2, backgroundColor: '#d2d4d8', color: '#fff' }}>
+                        <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
+                        <CardContent>
+                            <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+                                <Skeleton animation="wave" height={30} width="45%" />
+                                <Skeleton animation="wave" height={30} width="45%" />
+                            </Box>
+                        </CardContent>
+                    </Card>
+                </Grid>
+            ) : (
+                // Desktop and tablet view: show three skeletons
+                <>
+                    <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                        <Card sx={{ maxWidth: 400, m: 2, backgroundColor: '#d2d4d8', color: '#fff' }}>
+                            <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
+                            <CardContent>
+                                <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+                                    <Skeleton animation="wave" height={30} width="45%" />
+                                    <Skeleton animation="wave" height={30} width="45%" />
+                                </Box>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                    <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                        <Card sx={{ maxWidth: 400, m: 2, backgroundColor: '#d2d4d8', color: '#fff' }}>
+                            <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
+                            <CardContent>
+                                <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+                                    <Skeleton animation="wave" height={30} width="45%" />
+                                    <Skeleton animation="wave" height={30} width="45%" />
+                                </Box>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                    <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                        <Card sx={{ maxWidth: 400, m: 2, backgroundColor: '#d2d4d8', color: '#fff' }}>
+                            <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
+                            <CardContent>
+                                <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+                                    <Skeleton animation="wave" height={30} width="45%" />
+                                    <Skeleton animation="wave" height={30} width="45%" />
+                                </Box>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                </>
+            )}
+        </Grid>
                         )
                         :
                         (
-                            <Grid container spacing={3} my={3}>
+                            <Grid container spacing={3} my={1}>
                                 {interviewList.length > 0 ? interviewList.map((interview, index) => (
                                     <Grid size={{ xs: 12, sm: 6, lg: 4 }} key={index}>
                                         <InterviewItemCard interview={interview} />
@@ -177,7 +153,7 @@ const DashboardLowerPortion = () => {
                                             display: 'flex',
                                             justifyContent: 'center',
                                             alignItems: 'center',
-                                            marginTop: '50px',
+                                            marginTop: isMobileScreen ? '5px' : '45px',
                                             mx: 'auto', // Center horizontally
                                             padding: isMobileScreen ? '20px' : '40px', // Add padding for smaller screens
                                         }}
