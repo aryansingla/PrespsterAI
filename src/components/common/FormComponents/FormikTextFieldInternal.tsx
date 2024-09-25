@@ -4,13 +4,13 @@ import { TextField } from 'formik-mui'
 import { Box, Typography } from '@mui/material'
 import FormikErrorMessage from '../Heading/FormikErrorMessage'
 
-const FormikTextFieldInternal = (props:any) => {
+const FormikTextFieldInternal = (props: any) => {
     const error = getIn(props?.formik?.errors, props?.name)
     const touched = getIn(props?.formik?.touched, props?.name)
-    
+
     return (
         <Box>
-            <Typography sx={{color:'#fff'}}>{props.label}</Typography>
+            <Typography sx={{ color: '#fff' }}>{props.label}</Typography>
             <Field
                 fullWidth
                 name={props.name}
@@ -20,48 +20,50 @@ const FormikTextFieldInternal = (props:any) => {
                 type={props.type || 'text'}
                 onBlur={props.onBlur}
                 maxLength={props.maxLength}
-                // onKeyUp={props.type === 'number' ? handleKeyUp : null}
-                // label={props.label && <span>{props.label} {props.mandatory && <span style={{color : 'red'}}>*</span>}</span>}
                 autoComplete="off"
                 value={props.value}
                 disabled={props.disabled}
                 onChange={props.handleChange}
                 placeholder={props.placeholder}
                 inputProps={props.inputProps}
-                InputProps = {{
-                    startAdornment : props.startAdornment,
-                    endAdornment : props.endAdornment
+                InputProps={{
+                    startAdornment: props.startAdornment,
+                    endAdornment: props.endAdornment,
                 }}
                 sx={{
-                    background : "#000",
-                    borderRadius : '8px',
-                    '& .MuiInputBase-input' : {
-                        background : 'transparent',
-                        color: '#fff', 
+                    borderRadius: '8px',
+                    '& .MuiInputBase-input': {
+                        background: '#000',
+                        color: '#fff', // Regular text color
                     },
-                    '& .MuiFormHelperText-root' : {
-                        display : 'none'
+                    '& .Mui-disabled .MuiInputBase-input': {
+                        color: '#fff', // Ensure text color remains white when disabled
+                        WebkitTextFillColor: '#fff', // Fix for Chrome/Safari when disabled
+                    },
+                    '& .MuiFormHelperText-root': {
+                        display: 'none'
                     },
                     '& .MuiInputLabel-root': {
-                        color: '#fff', // label color
-                      },
-                      '& .MuiOutlinedInput-root': {
+                        color: '#fff', // Label color
+                    },
+                    '& .MuiOutlinedInput-root': {
                         '& fieldset': {
-                          borderColor: '#242424', // default border color
+                            borderColor: '#242424', // Default border color
                         },
                         '&:hover fieldset': {
-                          borderColor: '#242424', // hover border color
+                            borderColor: '#242424', // Hover border color
                         },
                         '&.Mui-focused fieldset': {
-                          borderColor: '#242424', // focused border color
+                            borderColor: '#242424', // Focused border color
                         },
-                      },
-                    color:'#fff'
-                    
+                        '&.Mui-disabled fieldset': {
+                            borderColor: '#fff', // Border color when disabled
+                        },
+                    },
                 }}
             />
             <FormikErrorMessage
-                title={ touched && error ? error : null}
+                title={touched && error ? error : null}
             />
         </Box>
     )

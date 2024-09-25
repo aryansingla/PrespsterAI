@@ -89,7 +89,6 @@ const DashboardUpperPage = () => {
         };
         axios(requestOptions)
             .then((data) => {
-                setLoading(false);
                 setOpenDialog(false);
                 toast.success(`${data?.data?.message}`, {
                     position: "bottom-left",
@@ -102,6 +101,7 @@ const DashboardUpperPage = () => {
                     theme: "light",
                 });
                 router.push(`/dashboard/interview/${data?.data?.mockId}`);
+                setLoading(false);
             })
             .catch((error) => {
                 setLoading(false);
@@ -201,7 +201,9 @@ const DashboardUpperPage = () => {
                     >
                         <CloseIcon />
                     </IconButton>
-                    <DialogContent dividers sx={{backgroundColor:'#242424'}}>
+                    <DialogContent dividers 
+                    sx={{backgroundColor:'#242424'}}
+                    >
                         <Formik
                             enableReinitialize
                             initialValues={initialValues}
@@ -306,7 +308,7 @@ const DashboardUpperPage = () => {
                                                     {loading ? (
                                                         <CircularProgress size={20} />
                                                     ) : (
-                                                        "Login"
+                                                        "Start Interview"
                                                     )}
                                                 </Button>
                                             </Box>
