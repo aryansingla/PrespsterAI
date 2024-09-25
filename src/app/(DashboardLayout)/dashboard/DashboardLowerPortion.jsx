@@ -10,7 +10,7 @@ import Image from 'next/image';
 
 const DashboardLowerPortion = () => {
     const isMobileScreen = useMediaQuery('(max-width:600px)');
-    const isTabScreen = useMediaQuery('(max-width:800px)');
+    const isTabScreen = useMediaQuery('(max-width:900px)');
 
     const session1 = useSession();
     const userDetails = session1?.data?.user;
@@ -83,114 +83,95 @@ const DashboardLowerPortion = () => {
                 {
                     loading ?
                         (
-                            <Grid container sx={{ padding: '50px' }}>
-            {/* Conditional rendering based on screen size */}
-            {isMobileScreen ? (
-                <Grid size={12}>
-                    <Card sx={{ maxWidth: 600, m: 2, backgroundColor: '#d2d4d8', color: '#fff' }}>
-                        <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
-                        <CardContent>
-                            <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                                <Skeleton animation="wave" height={30} width="45%" />
-                                <Skeleton animation="wave" height={30} width="45%" />
-                            </Box>
-                        </CardContent>
-                    </Card>
-                </Grid>
-            ) : (
-                // Desktop and tablet view: show three skeletons
-                <>
-                    <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                        <Card sx={{ maxWidth: 400, m: 2, backgroundColor: '#d2d4d8', color: '#fff' }}>
-                            <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
-                            <CardContent>
-                                <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                                    <Skeleton animation="wave" height={30} width="45%" />
-                                    <Skeleton animation="wave" height={30} width="45%" />
-                                </Box>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                        <Card sx={{ maxWidth: 400, m: 2, backgroundColor: '#d2d4d8', color: '#fff' }}>
-                            <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
-                            <CardContent>
-                                <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                                    <Skeleton animation="wave" height={30} width="45%" />
-                                    <Skeleton animation="wave" height={30} width="45%" />
-                                </Box>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                        <Card sx={{ maxWidth: 400, m: 2, backgroundColor: '#d2d4d8', color: '#fff' }}>
-                            <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
-                            <CardContent>
-                                <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                                    <Skeleton animation="wave" height={30} width="45%" />
-                                    <Skeleton animation="wave" height={30} width="45%" />
-                                </Box>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                </>
-            )}
-        </Grid>
+                            <Grid container spacing={3} sx={{ padding: '0px 10px 10px 10px' }}>
+                                {/* Conditional rendering based on screen size */}
+                                {isMobileScreen ? (
+                                    <Grid size={12} >
+                                        <Skeleton animation="wave" sx={{ backgroundColor: '#3d3e40' }} height={350} width="100%" />
+                                    </Grid>
+                                ) : (
+                                    // Desktop and tablet view: show three skeletons
+                                    <>
+                                        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                                            <Skeleton animation="wave" sx={{ backgroundColor: '#3d3e40' }} height={350} width="100%" />
+                                        </Grid>
+                                        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+
+                                            <Skeleton animation="wave" sx={{ backgroundColor: '#3d3e40' }} height={350} width="100%" />
+
+                                        </Grid>
+                                        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                                            <Skeleton animation="wave" sx={{ backgroundColor: '#3d3e40' }} height={350} width="100%" />
+                                        </Grid>
+                                        <Grid size={{ xs: 12, sm: 6, md: 4 }} sx={{marginTop:isTabScreen ? '0px':'-50px'}}>
+                                            <Skeleton animation="wave" sx={{ backgroundColor: '#3d3e40' }} height={350} width="100%" />
+                                        </Grid>
+                                        <Grid size={{ xs: 12, sm: 6, md: 4 }} sx={{marginTop:'-50px'}}>
+                                            <Skeleton animation="wave" sx={{ backgroundColor: '#3d3e40' }} height={350} width="100%" />
+                                        </Grid>
+                                        <Grid size={{ xs: 12, sm: 6, md: 4 }} sx={{marginTop:'-50px'}} >
+                                            <Skeleton animation="wave" sx={{ backgroundColor: '#3d3e40' }} height={350} width="100%" />
+                                        </Grid>
+                                    </>
+                                )}
+                            </Grid>
                         )
                         :
                         (
-                            <Grid container spacing={3} my={1}>
-                                {interviewList.length > 0 ? interviewList.map((interview, index) => (
-                                    <Grid size={{ xs: 12, sm: 6, lg: 4 }} key={index}>
-                                        <InterviewItemCard interview={interview} />
-                                    </Grid>
-                                ))
-                                    :
-                                    <Box
-                                        sx={{
-                                            background: 'linear-gradient(to bottom right, #ded9d8, #193067)',
-                                            width: isMobileScreen ? '90%' : '80%', // Reduce width for mobile screens
-                                            display: 'flex',
-                                            justifyContent: 'center',
-                                            alignItems: 'center',
-                                            marginTop: isMobileScreen ? '5px' : '45px',
-                                            mx: 'auto', // Center horizontally
-                                            padding: isMobileScreen ? '20px' : '40px', // Add padding for smaller screens
-                                        }}
-                                    >
+                            <>
+                                <Grid container spacing={3} my={1}>
+                                    {interviewList.length > 0 ? interviewList.map((interview, index) => (
+                                        <Grid size={{ xs: 12, sm: 6, lg: 4 }} key={index}>
+                                            <InterviewItemCard interview={interview} />
+                                        </Grid>
+                                    ))
+                                        :
                                         <Box
                                             sx={{
-                                                textAlign: 'center',
+                                                background: 'linear-gradient(to bottom right, #ded9d8, #193067)',
+                                                width: isMobileScreen ? '90%' : '80%', // Reduce width for mobile screens
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
+                                                marginTop: isMobileScreen ? '5px' : '45px',
+                                                mx: 'auto', // Center horizontally
+                                                padding: isMobileScreen ? '20px' : '40px', // Add padding for smaller screens
                                             }}
                                         >
-                                            <Typography
-                                                // variant={isTabScreen ? "h6" : "h4"}
+                                            <Box
                                                 sx={{
-                                                    color: '#060f25',
-                                                    fontWeight: '600',
-                                                    marginBottom: '20px',
-                                                    marginTop: '40px',
-                                                    fontSize: isMobileScreen ? '18px' : isTabScreen ? '18px' : '30px', // Adjust font size for mobile screens
+                                                    textAlign: 'center',
                                                 }}
                                             >
-                                                Oops! No past interviews yet. Start one now!
-                                            </Typography>
-                                            <Image
-                                                src={'/no-data-found.png'}
-                                                width={isMobileScreen ? 300 : 500} // Adjust image width for mobile screens
-                                                height={isMobileScreen ? 250 : 400} // Adjust image height for mobile screens
-                                                alt="no-data-found"
-                                                style={{ maxWidth: '100%', height: 'auto' }} // Ensure image scales properly
-                                            />
+                                                <Typography
+                                                    // variant={isTabScreen ? "h6" : "h4"}
+                                                    sx={{
+                                                        color: '#060f25',
+                                                        fontWeight: '600',
+                                                        marginBottom: '20px',
+                                                        marginTop: '40px',
+                                                        fontSize: isMobileScreen ? '18px' : isTabScreen ? '18px' : '30px', // Adjust font size for mobile screens
+                                                    }}
+                                                >
+                                                    Oops! No past interviews yet. Start one now!
+                                                </Typography>
+                                                <Image
+                                                    src={'/no-data-found.png'}
+                                                    width={isMobileScreen ? 300 : 500} // Adjust image width for mobile screens
+                                                    height={isMobileScreen ? 250 : 400} // Adjust image height for mobile screens
+                                                    alt="no-data-found"
+                                                    style={{ maxWidth: '100%', height: 'auto' }} // Ensure image scales properly
+                                                />
+                                            </Box>
                                         </Box>
-                                    </Box>
 
 
-                                }
+                                    }
 
 
 
-                            </Grid>
+                                </Grid>
+                            </>
                         )
                 }
 
