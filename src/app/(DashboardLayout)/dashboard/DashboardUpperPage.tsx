@@ -18,6 +18,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { chatSession } from '@/utils/GeminiAIModel';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
+import FormikTextFieldInternal from '@/components/common/FormComponents/FormikTextFieldInternal';
+import FormikDescriptionField from '@/components/common/FormComponents/FormikDescriptionField';
 
 
 const DashboardUpperPage = () => {
@@ -181,9 +183,9 @@ const DashboardUpperPage = () => {
                     open={openDialog}
                     maxWidth='md'
                 >
-                    <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-                        <Typography variant="h5">Tell us more about your Job Interview</Typography>
-                        <Typography variant="body1">Add details of Job Position, Job Description and Years of Experience
+                    <DialogTitle sx={{ m: 0, p: 2, backgroundColor:'#302f2f'}} id="customized-dialog-title">
+                        <Typography variant="h6" sx={{color:'#fff'}}>Tell us more about your Job Interview</Typography>
+                        <Typography variant="subtitle2" sx={{color:'#fff'}}>Add details of Job Position, Job Description and Years of Experience
                         </Typography>
 
                     </DialogTitle>
@@ -199,7 +201,7 @@ const DashboardUpperPage = () => {
                     >
                         <CloseIcon />
                     </IconButton>
-                    <DialogContent dividers>
+                    <DialogContent dividers sx={{backgroundColor:'#242424'}}>
                         <Formik
                             enableReinitialize
                             initialValues={initialValues}
@@ -230,7 +232,7 @@ const DashboardUpperPage = () => {
                                             </div>
                                             <Grid container spacing={1}>
                                                 <Grid size={{ xs: 12 }}>
-                                                    <FormikTextField
+                                                    <FormikTextFieldInternal
                                                         fullWidth
                                                         size="medium"
                                                         name="jobPosition"
@@ -244,7 +246,7 @@ const DashboardUpperPage = () => {
                                                 </Grid>
 
                                                 <Grid size={{ xs: 12 }}>
-                                                    <FormikTextField
+                                                    <FormikDescriptionField
                                                         fullWidth
                                                         size="medium"
                                                         name="jobDescription"
@@ -258,7 +260,7 @@ const DashboardUpperPage = () => {
                                                 </Grid>
 
                                                 <Grid size={{ xs: 12 }}>
-                                                    <FormikTextField
+                                                    <FormikTextFieldInternal
                                                         fullWidth
                                                         size="medium"
                                                         name="jobExperience"
@@ -275,7 +277,8 @@ const DashboardUpperPage = () => {
 
                                             <Box sx={{
                                                 display: 'flex',
-                                                gap: 2,        // Gap between buttons
+                                                gap: 2,
+                                                marginTop:'40px'
                                             }}>
                                                 <Button
                                                     variant="outlined"
@@ -283,6 +286,9 @@ const DashboardUpperPage = () => {
                                                     fullWidth
                                                     type="submit"
                                                     disabled={loading}
+                                                    sx={{
+                                                        borderRadius: '100px', // Adjust this value for more or less rounded corners
+                                                      }}
                                                 >
                                                     Cancel
                                                 </Button>
@@ -293,6 +299,9 @@ const DashboardUpperPage = () => {
                                                     fullWidth
                                                     type="submit"
                                                     disabled={loading}
+                                                    sx={{
+                                                        borderRadius: '100px', // Adjust this value for more or less rounded corners
+                                                      }}
                                                 >
                                                     {loading ? (
                                                         <CircularProgress size={20} />
