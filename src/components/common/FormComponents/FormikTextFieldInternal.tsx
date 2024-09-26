@@ -33,7 +33,7 @@ const FormikTextFieldInternal = (props: any) => {
                 sx={{
                     borderRadius: '8px',
                     '& .MuiInputBase-input': {
-                        background: '#000',
+                        background: '#161717',
                         color: '#fff', // Regular text color
                     },
                     '& .Mui-disabled .MuiInputBase-input': {

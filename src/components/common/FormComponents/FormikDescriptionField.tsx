@@ -33,7 +33,7 @@ const FormikDescriptionField = (props: any) => {
                     endAdornment: props.endAdornment,
                 }}
                 sx={{
-                    background: "#000",
+                    background: "#161717",
                     borderRadius: '8px',
                     '& .MuiInputBase-input': {
                         background: 'transparent',

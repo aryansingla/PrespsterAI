@@ -20,11 +20,14 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import FormikTextFieldInternal from '@/components/common/FormComponents/FormikTextFieldInternal';
 import FormikDescriptionField from '@/components/common/FormComponents/FormikDescriptionField';
+import Image from 'next/image';
 
 
 const DashboardUpperPage = () => {
     const isScreenSmall = useMediaQuery('(max-width:1080px)');
     const isMobileScreen = useMediaQuery('(max-width:600px)');
+    const isMoreLowerScreen = useMediaQuery('(max-width:380px)');
+
 
     const router = useRouter();
     const session1 = useSession();
@@ -52,6 +55,8 @@ const DashboardUpperPage = () => {
     const handleClose = () => {
         setOpenDialog(false);
         setJobPosition("");
+        setJobDescription("");
+        setJobExperience("");
     };
 
     const initialValues = {
@@ -73,7 +78,7 @@ const DashboardUpperPage = () => {
             .replace(/[\n\r\t]/g, '');
 
         const parsedResponse = JSON.parse(MockJsonResponse);
-        console.log('parsedResponse',parsedResponse);
+        console.log('parsedResponse', parsedResponse);
         setJsonResponse(MockJsonResponse);
 
         const requestOptions = {
@@ -140,7 +145,7 @@ const DashboardUpperPage = () => {
                     </Grid>
 
                     {/* Add New Box */}
-                    <Grid size={{ xs: 12, md: 6}}>
+                    <Grid size={{ xs: 12, md: 6 }}>
                         <div
                             style={{
                                 width: '100%', // Full width inside the grid
@@ -181,12 +186,15 @@ const DashboardUpperPage = () => {
                     onClose={handleClose}
                     aria-labelledby="customized-dialog-title"
                     open={openDialog}
-                    maxWidth='md'
+                    maxWidth='lg'
                 >
-                    <DialogTitle sx={{ m: 0, p: 2, backgroundColor:'#302f2f'}} id="customized-dialog-title">
-                        <Typography variant="h6" sx={{color:'#fff'}}>Tell us more about your Job Interview</Typography>
-                        <Typography variant="subtitle2" sx={{color:'#fff'}}>Add details of Job Position, Job Description and Years of Experience
-                        </Typography>
+                    <DialogTitle sx={{ m: 0, p: 2, backgroundColor: '#302f2f' }} id="customized-dialog-title">
+                        <Typography sx={{ fontSize: isMobileScreen ? "20px" :  "22px", color: '#fff' }}>Tell us more about your Job Interview</Typography>
+                        {!isMobileScreen && (
+                            <Typography variant="subtitle2" sx={{ color: '#fff' }}>
+                                Add details of Job Position, Job Description and Years of Experience
+                            </Typography>
+                        )}
 
                     </DialogTitle>
                     <IconButton
@@ -194,6 +202,8 @@ const DashboardUpperPage = () => {
                         onClick={handleClose}
                         sx={(theme) => ({
                             position: 'absolute',
+                            display: isMobileScreen ? 'none' : 'absolute',
+                            marginLeft:isMobileScreen ? '20px' : "0px",
                             right: 8,
                             top: 8,
                             color: theme.palette.grey[500],
@@ -201,8 +211,8 @@ const DashboardUpperPage = () => {
                     >
                         <CloseIcon />
                     </IconButton>
-                    <DialogContent dividers 
-                    sx={{backgroundColor:'#242424'}}
+                    <DialogContent dividers
+                        sx={{ backgroundColor: '#242424' }}
                     >
                         <Formik
                             enableReinitialize
@@ -277,41 +287,68 @@ const DashboardUpperPage = () => {
 
                                             </Grid>
 
-                                            <Box sx={{
-                                                display: 'flex',
-                                                gap: 2,
-                                                marginTop:'40px'
-                                            }}>
-                                                <Button
-                                                    variant="outlined"
-                                                    size="large"
-                                                    fullWidth
-                                                    type="submit"
-                                                    disabled={loading}
-                                                    sx={{
-                                                        borderRadius: '100px', // Adjust this value for more or less rounded corners
-                                                      }}
-                                                >
-                                                    Cancel
-                                                </Button>
-                                                <Button
-                                                    color="secondary"
-                                                    variant="contained"
-                                                    size="large"
-                                                    fullWidth
-                                                    type="submit"
-                                                    disabled={loading}
-                                                    sx={{
-                                                        borderRadius: '100px', // Adjust this value for more or less rounded corners
-                                                      }}
-                                                >
-                                                    {loading ? (
-                                                        <CircularProgress size={20} />
-                                                    ) : (
-                                                        "Start Interview"
-                                                    )}
-                                                </Button>
-                                            </Box>
+                                            <Grid
+                                                container spacing={1}
+                                                sx={{
+                                                    marginTop: '20px'
+                                                }}>
+                                                <Grid size={{ xs: 12, sm: 6 }}>
+                                                    <Button
+                                                        variant="outlined"
+                                                        size="large"
+                                                        fullWidth
+                                                        onClick={handleClose}
+                                                        disabled={loading}
+                                                        sx={{
+                                                            borderRadius: '100px',
+                                                            textTransform: 'none',
+                                                            '&.Mui-disabled': {
+                                                                borderColor: 'white',
+                                                                backgroundColor: '#2d2e2e',
+                                                                color: '#171717',
+                                                            },
+                                                        }}
+                                                    >
+                                                        <Typography>Cancel</Typography>
+                                                    </Button>
+                                                </Grid>
+                                                <Grid size={{ xs: 12, sm: 6 }}>
+                                                    <Button
+                                                        color="secondary"
+                                                        variant="contained"
+                                                        size="large"
+                                                        fullWidth
+                                                        type="submit"
+                                                        disabled={loading}
+                                                        sx={{
+                                                            borderRadius: '100px',
+                                                            textTransform: 'none',
+                                                            '&.Mui-disabled': {
+                                                                borderColor: 'white',
+                                                                backgroundColor: '#2d2e2e',
+                                                                color: '#fff',
+                                                            },
+                                                        }}
+                                                    >
+                                                        {loading ? (
+                                                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                                <Image
+                                                                    src="/sparkle.gif"
+                                                                    alt="Loading..."
+                                                                    width={55}
+                                                                    height={40}
+                                                                    style={{ marginRight: '10px' }}  // Adjust margin if needed
+                                                                />
+                                                                <Typography>Generating from AI</Typography>
+                                                            </div>
+                                                        ) : (
+                                                            <Typography>Start Interview</Typography>
+
+
+                                                        )}
+                                                    </Button>
+                                                </Grid>
+                                            </Grid>
                                         </Form>
                                     </Container>
                                 );
