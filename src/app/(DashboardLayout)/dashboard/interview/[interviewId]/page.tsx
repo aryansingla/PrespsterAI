@@ -1,5 +1,5 @@
 "use client"
-import { Button, Typography } from '@mui/material'
+import { Alert, Box, Button, Typography } from '@mui/material'
 // import { MockInterview } from '@/utils/schema'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
@@ -9,6 +9,7 @@ import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import Grid from '@mui/material/Grid2';
+import Image from 'next/image'
 
 
 const page = ({ params }) => {
@@ -67,33 +68,45 @@ const page = ({ params }) => {
 
     return (
         <>
-            <Grid container sx={{backgroundColor:'black'}}>
+            <Grid container sx={{ backgroundColor: 'black' }}>
                 <Typography color="#fff" variant="h6" sx={{ fontWeight: 'bold' }}>Let's Get Started</Typography>
             </Grid>
             <Grid container spacing={2} style={{ color: '#fff' }}>
 
-                <Grid size={{ xs: 12, sm: 6 }}>
+                <Grid size={{ xs: 12, lg:6 }}>
 
-                    <div style={{ padding: '1.25rem' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', margin: '1.25rem 0', gap: '1.25rem' }}>
-                            <div style={{ display: 'flex', flexDirection: 'column', padding: '1.25rem', borderRadius: '0.5rem', border: '1px solid #000', gap: '1.25rem' }}>
-                                <h2 style={{ fontSize: '1.25rem' }}><strong style={{color:'#6a91e6'}}>Job Role/Job Position: </strong>{interviewData?.jobPosition}</h2>
-                                <h2 style={{ fontSize: '1.25rem' }}><strong style={{color:'#6a91e6'}}>Job Description/Tech Stack: </strong>{interviewData?.jobDescription}</h2>
-                                <h2 style={{ fontSize: '1.25rem' }}><strong style={{color:'#6a91e6'}}>Years of Experience: </strong>{interviewData?.jobExperience} years</h2>
+                    <div style={{ padding: '25px' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', margin: '20px 0' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', padding: '1.25rem', borderRadius: '0.5rem', border: '1px solid #000', gap:'20px'}}>
+                                <Typography style={{ fontSize: '30px' }}><strong style={{ color: '#6a91e6' }}>Job Role/Job Position: </strong>{interviewData?.jobPosition}</Typography>
+                                <Typography style={{ fontSize: '30px' }}><strong style={{ color: '#6a91e6' }}>Job Description/Tech Stack: </strong>{interviewData?.jobDescription}</Typography>
+                                <Typography style={{ fontSize: '30px' }}><strong style={{ color: '#6a91e6' }}>Years of Experience: </strong>{interviewData?.jobExperience} years</Typography>
                             </div>
-                            <div style={{ border: '1px solid #fbbf24', backgroundColor: '#fef3c7', borderRadius: '0.5rem' }}>
-                                <h2 style={{ display: 'flex', alignItems: 'center', color: '#ca8a04' }}><LightbulbIcon /><strong>Information</strong></h2>
+                            <div style={{ border: '1px solid #000', backgroundColor: '#252626', borderRadius: '0.5rem' }}>
+                                <h2 style={{ display: 'flex', alignItems: 'center', color: '#2663eb' }}>
+                                    <Image
+                                        src="/alert3.gif"
+                                        alt="Information..."
+                                        width={100}
+                                        height={100}
+                                        style={{ marginRight: '10px' }}  // Adjust margin if needed
+                                    /><strong>Information</strong></h2>
                                 <Typography variant='body1'
-                                    style={{ color: '#854d0e', padding: '20px' }}
+                                    style={{ color: '#fff', padding: '0px 20px 20px 20px' }}
                                 >
-                                    Enable VideoCam and Microphone to start your AI Generated Mock Interview, It has 5 questions which you can answer and at last you will get the report on the basis of your answer. NOTE we never record your video, you can disable it anytime you want.
+                                    Enable VideoCam and Microphone to start your AI Generated Mock Interview, It has 5 questions which you can answer and at last you will get the report on the basis of your answer.
+                                </Typography>
+                                <Typography variant='body1'
+                                    style={{ color: '#fff', padding: '0px 20px 20px 20px' }}
+                                >
+                                    <span style={{color: '#2663eb'}}>NOTE:</span> We never record your video, you can disable it anytime you want.
                                 </Typography>
                             </div>
                         </div>
 
                     </div>
                 </Grid>
-                <Grid size={{ xs: 12, sm: 6 }}>
+                <Grid size={{ xs: 12, lg: 6 }}>
                     <div style={{
                         boxShadow: '0 10px 30px rgba(255, 255, 255, 0.7)',
                         borderRadius: '20px',
@@ -102,15 +115,18 @@ const page = ({ params }) => {
                         backgroundColor: '#000' // Optional: add a background color to contrast the white shadow
                     }}>
                         {webCamEnabled ? (
+                            <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                             <Webcam
                                 onUserMedia={() => setWebCamEnabled(true)}
                                 onUserMediaError={() => setWebCamEnabled(false)}
                                 mirrored={true}
                                 style={{
-                                    height: '300px',
-                                    width: '300px'
+                                    height: '50vh',
+                                    width: '80%',
+                                    margin:'auto'
                                 }}
                             />
+                            </Box>
                         ) : (
                             <>
                                 <VideocamOffIcon style={{
