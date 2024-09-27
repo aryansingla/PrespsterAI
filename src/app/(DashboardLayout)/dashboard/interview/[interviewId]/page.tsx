@@ -1,5 +1,5 @@
 "use client"
-import { Alert, Box, Button, Typography } from '@mui/material'
+import { Alert, Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Typography, useMediaQuery } from '@mui/material'
 // import { MockInterview } from '@/utils/schema'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
@@ -13,10 +13,17 @@ import Image from 'next/image'
 
 
 const page = ({ params }) => {
+    const isMediumScreen = useMediaQuery('(max-width:1450px)');
+    const isTabScreen = useMediaQuery('(max-width:1200px)');
+    const isSecondMediumScreen = useMediaQuery('(max-width:900px)');
+    const isMobileScreen = useMediaQuery('(max-width:600px)');
+
 
     const [interviewData, setInterviewData] = useState({});
     const [webCamEnabled, setWebCamEnabled] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [openInfoBox, setOpenInfoBox] = useState(false);
+
 
     useEffect(() => {
         console.log(params);
@@ -66,31 +73,102 @@ const page = ({ params }) => {
             });
     }
 
+    const closeInfoBox = () => {
+        setOpenInfoBox(false);
+    }
+
     return (
         <>
-            <Grid container sx={{ backgroundColor: 'black' }}>
-                <Typography color="#fff" variant="h6" sx={{ fontWeight: 'bold' }}>Let's Get Started</Typography>
+            <Grid
+                container
+                sx={{
+                    backgroundColor: 'black',
+                    justifyContent: 'flex-start', // Centers horizontally on tablet screen, aligns left otherwise
+                    alignItems: 'center',
+                    marginBottom: '20px',
+                    position: 'relative' // To position the image at the right end when on tablet screen
+                }}
+            >
+                {/* Centered or left-aligned Typography */}
+                <Typography color="#fff" variant="h6" sx={{ fontWeight: 'bold' }}>
+                    Let's Get Started
+                </Typography>
+
+                {/* Conditionally render the image on tab screens and position it at the right */}
+                {isSecondMediumScreen && (
+                    <Image
+                        src="/information.png"
+                        alt="Information..."
+                        width={50}
+                        height={50}
+                        style={{
+                            position: 'absolute',
+                            right: 0,
+                            marginRight: '10px',
+                            cursor: 'pointer'
+                        }}
+                        onClick={() => setOpenInfoBox(true)}
+                    />
+                )}
             </Grid>
+
             <Grid container spacing={2} style={{ color: '#fff' }}>
 
-                <Grid size={{ xs: 12, lg:6 }}>
+                <Grid size={{ xs: 12, lg: 6 }}
+                    sx={{
+                        order: { xs: 2, lg: 1 }, // On small and extra small screens, this will be the second item. On medium and above, it will be the first.
+                    }}
+                >
 
-                    <div style={{ padding: '25px' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', margin: '20px 0' }}>
-                            <div style={{ display: 'flex', flexDirection: 'column', padding: '1.25rem', borderRadius: '0.5rem', border: '1px solid #000', gap:'20px'}}>
-                                <Typography style={{ fontSize: '30px' }}><strong style={{ color: '#6a91e6' }}>Job Role/Job Position: </strong>{interviewData?.jobPosition}</Typography>
-                                <Typography style={{ fontSize: '30px' }}><strong style={{ color: '#6a91e6' }}>Job Description/Tech Stack: </strong>{interviewData?.jobDescription}</Typography>
-                                <Typography style={{ fontSize: '30px' }}><strong style={{ color: '#6a91e6' }}>Years of Experience: </strong>{interviewData?.jobExperience} years</Typography>
+                    <div style={{ padding: isSecondMediumScreen ? '2px' : '25px' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', margin: '20px 0', backgroundColor: '#252626' }}>
+                            <div style={{ display: !isSecondMediumScreen ? 'flex' : 'none', flexDirection: 'column', padding: '1.25rem', borderRadius: '0.5rem', border: '1px solid #000', gap: '20px', flex: '0.5' }}>
+                                <Typography style={{ fontSize: isMediumScreen ? '23px' : '30px' }}><strong style={{ color: '#6a91e6' }}>Job Role/Job Position: </strong>{interviewData?.jobPosition}</Typography>
+                                <Typography style={{ fontSize: isMediumScreen ? '23px' : '30px' }}><strong style={{ color: '#6a91e6' }}>Job Description/Tech Stack: </strong>{interviewData?.jobDescription}</Typography>
+                                <Typography style={{ fontSize: isMediumScreen ? '23px' : '30px' }}><strong style={{ color: '#6a91e6' }}>Years of Experience: </strong>{interviewData?.jobExperience} years</Typography>
                             </div>
-                            <div style={{ border: '1px solid #000', backgroundColor: '#252626', borderRadius: '0.5rem' }}>
+                            <div
+                                style={{
+                                    display: isMobileScreen ? 'flex' : 'none',
+                                    flexDirection: 'column',
+                                    padding: '15px',
+                                    borderRadius: '0.5rem', border: '1px solid #000',
+                                    gap: '20px', flex: isSecondMediumScreen ? '1' : '0.5',
+                                    backgroundColor: '#252626',
+                                    width: '100%'
+                                }}
+                            >
+                                <div>
+                                    <Typography style={{ fontSize: isMobileScreen ? '18px' : '23px' }}><strong style={{ color: '#6a91e6' }}>Job Role/Job Position </strong></Typography>
+                                    <Typography style={{ fontSize: isMobileScreen ? '18px' : '23px' }}>{interviewData?.jobPosition}</Typography>
+                                </div>
+
+                                <div>
+                                    <Typography style={{ fontSize: isMobileScreen ? '18px' : '23px' }}><strong style={{ color: '#6a91e6' }}>Job Description/Tech Stack </strong></Typography>
+                                    <Typography style={{ fontSize: isMobileScreen ? '18px' : '23px' }}>{interviewData?.jobDescription}</Typography>
+                                </div>
+
+                                <div>
+                                    <Typography style={{ fontSize: isMobileScreen ? '18px' : '23px' }}><strong style={{ color: '#6a91e6' }}>Years of Experience </strong></Typography>
+                                    <Typography style={{ fontSize: isMobileScreen ? '18px' : '23px' }}>{interviewData?.jobExperience} years</Typography>
+                                </div>
+                            </div>
+                            <div style={{ display: isSecondMediumScreen && !isMobileScreen ? 'flex' : 'none', flexDirection: 'column', padding: '1.25rem', borderRadius: '0.5rem', border: '1px solid #000', gap: '20px', flex: '0.5', backgroundColor: '#252626', }}>
+                                <Typography style={{ fontSize: isMediumScreen ? '23px' : '30px' }}><strong style={{ color: '#6a91e6' }}>Job Role/Job Position: </strong>{interviewData?.jobPosition}</Typography>
+                                <Typography style={{ fontSize: isMediumScreen ? '23px' : '30px' }}><strong style={{ color: '#6a91e6' }}>Job Description/Tech Stack: </strong>{interviewData?.jobDescription}</Typography>
+                                <Typography style={{ fontSize: isMediumScreen ? '23px' : '30px' }}><strong style={{ color: '#6a91e6' }}>Years of Experience: </strong>{interviewData?.jobExperience} years</Typography>
+                            </div>
+                            <div style={{ border: '1px solid #000', backgroundColor: '#252626', borderRadius: '0.5rem', flex: '0.5', display: isSecondMediumScreen ? "none" : "block" }}>
+
                                 <h2 style={{ display: 'flex', alignItems: 'center', color: '#2663eb' }}>
                                     <Image
-                                        src="/alert3.gif"
+                                        src="/information.png"
                                         alt="Information..."
-                                        width={100}
-                                        height={100}
-                                        style={{ marginRight: '10px' }}  // Adjust margin if needed
+                                        width={50}
+                                        height={50}
+                                        style={{ margin: '0px 10px' }}  // Adjust margin if needed
                                     /><strong>Information</strong></h2>
+
                                 <Typography variant='body1'
                                     style={{ color: '#fff', padding: '0px 20px 20px 20px' }}
                                 >
@@ -99,14 +177,19 @@ const page = ({ params }) => {
                                 <Typography variant='body1'
                                     style={{ color: '#fff', padding: '0px 20px 20px 20px' }}
                                 >
-                                    <span style={{color: '#2663eb'}}>NOTE:</span> We never record your video, you can disable it anytime you want.
+                                    <span style={{ color: '#2663eb' }}>NOTE:</span> We never record your video, you can disable it anytime you want.
                                 </Typography>
+
                             </div>
                         </div>
 
                     </div>
                 </Grid>
-                <Grid size={{ xs: 12, lg: 6 }}>
+                <Grid size={{ xs: 12, lg: 6 }}
+                    sx={{
+                        order: { xs: 1, lg: 2 }, // On small and extra small screens, this will be the first item. On medium and above, it will be the second.
+                    }}
+                >
                     <div style={{
                         boxShadow: '0 10px 30px rgba(255, 255, 255, 0.7)',
                         borderRadius: '20px',
@@ -115,17 +198,17 @@ const page = ({ params }) => {
                         backgroundColor: '#000' // Optional: add a background color to contrast the white shadow
                     }}>
                         {webCamEnabled ? (
-                            <Box sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                            <Webcam
-                                onUserMedia={() => setWebCamEnabled(true)}
-                                onUserMediaError={() => setWebCamEnabled(false)}
-                                mirrored={true}
-                                style={{
-                                    height: '50vh',
-                                    width: '80%',
-                                    margin:'auto'
-                                }}
-                            />
+                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <Webcam
+                                    onUserMedia={() => setWebCamEnabled(true)}
+                                    onUserMediaError={() => setWebCamEnabled(false)}
+                                    mirrored={true}
+                                    style={{
+                                        height: '50vh',
+                                        width: '80%',
+                                        margin: 'auto'
+                                    }}
+                                />
                             </Box>
                         ) : (
                             <>
@@ -150,6 +233,42 @@ const page = ({ params }) => {
                     </div>
                 </Grid>
             </Grid>
+            <Dialog
+                open={openInfoBox}
+                onClose={closeInfoBox}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+                
+            >
+                <DialogTitle id="alert-dialog-title" sx={{backgroundColor:'#34373c'}}>
+                <Typography variant='body1'
+                                    style={{ color: '#fff', padding: '2px' }}
+                                >
+                                    Enable VideoCam and Microphone to start your AI Generated Mock Interview, It has 5 questions which you can answer and at last you will get the report on the basis of your answer.
+                                </Typography>
+                </DialogTitle>
+                <DialogContent sx={{backgroundColor:'#34373c'}}>
+                    <DialogContentText id="alert-dialog-description">
+                    <Typography variant='body1'
+                                    style={{ color: '#fff', padding: '2px' }}
+                                >
+                                    We never record your video, you can disable it anytime you want.
+                                </Typography>
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions sx={{backgroundColor:'#34373c'}}>
+                    <Button 
+                    onClick={closeInfoBox}  
+                    color="secondary"
+                    variant="contained"
+                    sx={{
+                        textTransform: 'none',
+                    }}
+                    >
+                        Agree
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </>
 
     )
