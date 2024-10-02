@@ -1,5 +1,5 @@
 "use client"
-import { Box, Card, CardContent, CardHeader, Skeleton, Typography, useMediaQuery } from '@mui/material'
+import { Box, Card, CardContent, CardHeader, Paper, Skeleton, Typography, useMediaQuery } from '@mui/material'
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid2';
@@ -93,25 +93,62 @@ const DashboardLowerPortion = () => {
                                     // Desktop and tablet view: show three skeletons
                                     <>
                                         <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                                            <Skeleton animation="wave" sx={{ backgroundColor: '#3d3e40' }} height={350} width="100%" />
+                                            <Paper sx={{ padding: '5px', backgroundColor: '#18181B' }}>
+                                                <Skeleton animation="wave" height={150} width="100%" variant="rectangular" sx={{ backgroundColor: '#27272a' }} />
+                                                <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
+                                                    <Skeleton animation="wave" sx={{ backgroundColor: '#27272a' }} height={50} width="40%" />
+                                                    <Skeleton animation="wave" sx={{ backgroundColor: '#27272a' }} height={50} width="40%" />
+                                                </Box>
+
+                                            </Paper>
                                         </Grid>
                                         <Grid size={{ xs: 12, sm: 6, md: 4 }}>
 
-                                            <Skeleton animation="wave" sx={{ backgroundColor: '#3d3e40' }} height={350} width="100%" />
+                                            <Paper sx={{ padding: '5px', backgroundColor: '#18181B' }}>
+                                                <Skeleton animation="wave" height={150} width="100%" variant="rectangular" sx={{ backgroundColor: '#27272a' }} />
+                                                <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
+                                                    <Skeleton animation="wave" sx={{ backgroundColor: '#27272a' }} height={50} width="40%" />
+                                                    <Skeleton animation="wave" sx={{ backgroundColor: '#27272a' }} height={50} width="40%" />
+                                                </Box>
 
+                                            </Paper>
                                         </Grid>
                                         <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-                                            <Skeleton animation="wave" sx={{ backgroundColor: '#3d3e40' }} height={350} width="100%" />
-                                        </Grid>
-                                        <Grid size={{ xs: 12, sm: 6, md: 4 }} sx={{marginTop:isTabScreen ? '0px':'-50px'}}>
-                                            <Skeleton animation="wave" sx={{ backgroundColor: '#3d3e40' }} height={350} width="100%" />
-                                        </Grid>
-                                        <Grid size={{ xs: 12, sm: 6, md: 4 }} sx={{marginTop:'-50px'}}>
-                                            <Skeleton animation="wave" sx={{ backgroundColor: '#3d3e40' }} height={350} width="100%" />
-                                        </Grid>
-                                        <Grid size={{ xs: 12, sm: 6, md: 4 }} sx={{marginTop:'-50px'}} >
-                                            <Skeleton animation="wave" sx={{ backgroundColor: '#3d3e40' }} height={350} width="100%" />
-                                        </Grid>
+                                            <Paper sx={{ padding: '5px', backgroundColor: '#18181B' }}>
+                                                <Skeleton animation="wave" height={150} width="100%" variant="rectangular" sx={{ backgroundColor: '#27272a' }} />
+                                                <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
+                                                    <Skeleton animation="wave" sx={{ backgroundColor: '#27272a' }} height={50} width="40%" />
+                                                    <Skeleton animation="wave" sx={{ backgroundColor: '#27272a' }} height={50} width="40%" />
+                                                </Box>
+
+                                            </Paper>                                        </Grid>
+                                        <Grid size={{ xs: 12, sm: 6, md: 4 }} >
+                                            <Paper sx={{ padding: '5px', backgroundColor: '#18181B' }}>
+                                                <Skeleton animation="wave" height={150} width="100%" variant="rectangular" sx={{ backgroundColor: '#27272a' }} />
+                                                <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
+                                                    <Skeleton animation="wave" sx={{ backgroundColor: '#27272a' }} height={50} width="40%" />
+                                                    <Skeleton animation="wave" sx={{ backgroundColor: '#27272a' }} height={50} width="40%" />
+                                                </Box>
+
+                                            </Paper>                                        </Grid>
+                                        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                                            <Paper sx={{ padding: '5px', backgroundColor: '#18181B' }}>
+                                                <Skeleton animation="wave" height={150} width="100%" variant="rectangular" sx={{ backgroundColor: '#27272a' }} />
+                                                <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
+                                                    <Skeleton animation="wave" sx={{ backgroundColor: '#27272a' }} height={50} width="40%" />
+                                                    <Skeleton animation="wave" sx={{ backgroundColor: '#27272a' }} height={50} width="40%" />
+                                                </Box>
+
+                                            </Paper>                                        </Grid>
+                                        <Grid size={{ xs: 12, sm: 6, md: 4 }} >
+                                            <Paper sx={{ padding: '5px', backgroundColor: '#18181B' }}>
+                                                <Skeleton animation="wave" height={150} width="100%" variant="rectangular" sx={{ backgroundColor: '#27272a' }} />
+                                                <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
+                                                    <Skeleton animation="wave" sx={{ backgroundColor: '#27272a' }} height={50} width="40%" />
+                                                    <Skeleton animation="wave" sx={{ backgroundColor: '#27272a' }} height={50} width="40%" />
+                                                </Box>
+
+                                            </Paper>                                        </Grid>
                                     </>
                                 )}
                             </Grid>
@@ -119,6 +156,7 @@ const DashboardLowerPortion = () => {
                         :
                         (
                             <>
+
                                 <Grid container spacing={3} my={1}>
                                     {interviewList.length > 0 ? interviewList.map((interview, index) => (
                                         <Grid size={{ xs: 12, sm: 6, lg: 4 }} key={index}>
