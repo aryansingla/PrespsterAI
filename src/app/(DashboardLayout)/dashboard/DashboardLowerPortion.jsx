@@ -92,7 +92,7 @@ const DashboardLowerPortion = () => {
                                 ) : (
                                     // Desktop and tablet view: show three skeletons
                                     <>
-                                        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                                        <Grid size={{ xs: 12, md: 6, lg: 4 }}>
                                             <Paper sx={{ padding: '5px', backgroundColor: '#18181B' }}>
                                                 <Skeleton animation="wave" height={150} width="100%" variant="rectangular" sx={{ backgroundColor: '#27272a' }} />
                                                 <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
@@ -102,7 +102,7 @@ const DashboardLowerPortion = () => {
 
                                             </Paper>
                                         </Grid>
-                                        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                                        <Grid size={{ xs: 12, md: 6, lg: 4 }}>
 
                                             <Paper sx={{ padding: '5px', backgroundColor: '#18181B' }}>
                                                 <Skeleton animation="wave" height={150} width="100%" variant="rectangular" sx={{ backgroundColor: '#27272a' }} />
@@ -113,7 +113,7 @@ const DashboardLowerPortion = () => {
 
                                             </Paper>
                                         </Grid>
-                                        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                                        <Grid size={{ xs: 12, md: 6, lg: 4 }}>
                                             <Paper sx={{ padding: '5px', backgroundColor: '#18181B' }}>
                                                 <Skeleton animation="wave" height={150} width="100%" variant="rectangular" sx={{ backgroundColor: '#27272a' }} />
                                                 <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
@@ -122,7 +122,7 @@ const DashboardLowerPortion = () => {
                                                 </Box>
 
                                             </Paper>                                        </Grid>
-                                        <Grid size={{ xs: 12, sm: 6, md: 4 }} >
+                                        <Grid size={{ xs: 12, md: 6, lg: 4 }} >
                                             <Paper sx={{ padding: '5px', backgroundColor: '#18181B' }}>
                                                 <Skeleton animation="wave" height={150} width="100%" variant="rectangular" sx={{ backgroundColor: '#27272a' }} />
                                                 <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
@@ -131,7 +131,7 @@ const DashboardLowerPortion = () => {
                                                 </Box>
 
                                             </Paper>                                        </Grid>
-                                        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+                                        <Grid size={{ xs: 12, md: 6, lg: 4 }}>
                                             <Paper sx={{ padding: '5px', backgroundColor: '#18181B' }}>
                                                 <Skeleton animation="wave" height={150} width="100%" variant="rectangular" sx={{ backgroundColor: '#27272a' }} />
                                                 <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
@@ -140,7 +140,7 @@ const DashboardLowerPortion = () => {
                                                 </Box>
 
                                             </Paper>                                        </Grid>
-                                        <Grid size={{ xs: 12, sm: 6, md: 4 }} >
+                                        <Grid size={{ xs: 12, md: 6, lg: 4 }} >
                                             <Paper sx={{ padding: '5px', backgroundColor: '#18181B' }}>
                                                 <Skeleton animation="wave" height={150} width="100%" variant="rectangular" sx={{ backgroundColor: '#27272a' }} />
                                                 <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
@@ -159,7 +159,7 @@ const DashboardLowerPortion = () => {
 
                                 <Grid container spacing={3} my={1}>
                                     {interviewList.length > 0 ? interviewList.map((interview, index) => (
-                                        <Grid size={{ xs: 12, sm: 6, lg: 4 }} key={index}>
+                                        <Grid size={{ xs: 12, md: 6, lg: 4 }} key={index}>
                                             <InterviewItemCard interview={interview} />
                                         </Grid>
                                     ))
