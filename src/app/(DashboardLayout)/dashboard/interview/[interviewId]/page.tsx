@@ -90,7 +90,16 @@ const page = ({ params }) => {
                 }}
             >
                 {/* Centered or left-aligned Typography */}
-                <Typography color="#fff" variant="h6" sx={{ fontWeight: 'bold' }}>
+                <Typography
+                    color="#fff"
+                    variant={isSecondMediumScreen ? "h6" : "h4"}
+                    sx={{
+                        fontWeight: 'bold',
+                        background: 'linear-gradient(to right, #8bb9e0, #4facfe)',
+                        WebkitBackgroundClip: 'text', // Clip the background to text
+                        WebkitTextFillColor: 'transparent', 
+                    }}
+                >
                     Let's Get Started
                 </Typography>
 
@@ -213,18 +222,20 @@ const page = ({ params }) => {
                         ) : (
                             <>
                                 <VideocamOffIcon style={{
-                                    height: '18rem', /* 72 * 4 = 288px */
+                                    height: '50vh', /* 72 * 4 = 288px */
                                     width: '100%',
-                                    margin: '1.75rem 0', /* 7 * 4 = 28px */
-                                    padding: '5rem', /* 20 * 4 = 80px */
+                                    // margin: '1.75rem 0', /* 7 * 4 = 28px */
+                                    padding: '5rem', 
                                     backgroundColor: '#yourSecondaryColor', /* Replace with your actual secondary color */
                                     borderRadius: '0.5rem', /* rounded-lg = 8px */
                                     border: '1px solid #yourBorderColor' /* Replace with your actual border color */
                                 }} />
-                                <Button onClick={() => setWebCamEnabled(true)}
-                                    style={{ width: '100%', color: 'white', backgroundColor: '#2663eb' }}>Enable Web Cam and Microphone</Button>
+                              
                             </>
                         )}
+                          <Button onClick={() => setWebCamEnabled(!webCamEnabled)}
+                                    style={{ width: '100%', color: 'white', backgroundColor: '#2663eb' }}>{webCamEnabled ? 'Disable Web cam' : 'Enable Web Cam'}
+                                </Button>
                         <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'end', marginTop: '20px' }}>
                             <Link href={`/dashboard/interview/${params.interviewId}/start`}>
                                 <Button style={{ color: 'white', backgroundColor: '#2663eb' }}>Start Interview</Button>
@@ -238,32 +249,32 @@ const page = ({ params }) => {
                 onClose={closeInfoBox}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
-                
+
             >
-                <DialogTitle id="alert-dialog-title" sx={{backgroundColor:'#34373c'}}>
-                <Typography variant='body1'
-                                    style={{ color: '#fff', padding: '2px' }}
-                                >
-                                    Enable VideoCam and Microphone to start your AI Generated Mock Interview, It has 5 questions which you can answer and at last you will get the report on the basis of your answer.
-                                </Typography>
-                </DialogTitle>
-                <DialogContent sx={{backgroundColor:'#34373c'}}>
-                    <DialogContentText id="alert-dialog-description">
+                <DialogTitle id="alert-dialog-title" sx={{ backgroundColor: '#34373c' }}>
                     <Typography variant='body1'
-                                    style={{ color: '#fff', padding: '2px' }}
-                                >
-                                    We never record your video, you can disable it anytime you want.
-                                </Typography>
+                        style={{ color: '#fff', padding: '2px' }}
+                    >
+                        Enable VideoCam and Microphone to start your AI Generated Mock Interview, It has 5 questions which you can answer and at last you will get the report on the basis of your answer.
+                    </Typography>
+                </DialogTitle>
+                <DialogContent sx={{ backgroundColor: '#34373c' }}>
+                    <DialogContentText id="alert-dialog-description">
+                        <Typography variant='body1'
+                            style={{ color: '#fff', padding: '2px' }}
+                        >
+                            We never record your video, you can disable it anytime you want.
+                        </Typography>
                     </DialogContentText>
                 </DialogContent>
-                <DialogActions sx={{backgroundColor:'#34373c'}}>
-                    <Button 
-                    onClick={closeInfoBox}  
-                    color="secondary"
-                    variant="contained"
-                    sx={{
-                        textTransform: 'none',
-                    }}
+                <DialogActions sx={{ backgroundColor: '#34373c' }}>
+                    <Button
+                        onClick={closeInfoBox}
+                        color="secondary"
+                        variant="contained"
+                        sx={{
+                            textTransform: 'none',
+                        }}
                     >
                         Agree
                     </Button>

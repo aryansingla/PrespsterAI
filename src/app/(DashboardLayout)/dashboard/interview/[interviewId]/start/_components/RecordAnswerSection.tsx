@@ -7,11 +7,22 @@ import useSpeechToText from 'react-hook-speech-to-text';
 import { chatSession } from '@/utils/GeminiAIModel'
 
 import moment from 'moment'
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, Typography, useMediaQuery } from '@mui/material';
 import MicIcon from '@mui/icons-material/Mic';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useSession } from 'next-auth/react';
+import VideocamIcon from '@mui/icons-material/Videocam';
+import VideocamOffIcon from '@mui/icons-material/VideocamOff';
+
+const blinkAnimation = {
+    '@keyframes blink': {
+        '0%': { opacity: 1 },
+        '50%': { opacity: 0.5 },
+        '100%': { opacity: 1 },
+    },
+    animation: 'blink 1s linear infinite'
+};
 
 const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex, interviewData }) => {
     const {
@@ -30,6 +41,12 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex, inter
     const userDetails = session1?.data?.user;
     const [userAnswer, setUserAnswer] = useState('');
     const [loading, setLoading] = useState(false);
+    const isMoreSmallScreen = useMediaQuery('(max-width:1200px)');
+    const isMobileSmallScreen = useMediaQuery('(max-width:600px)');
+
+    const [webCamEnabled, setWebCamEnabled] = useState(false);
+
+    const [recordLoading, setRecordLoading] = useState(false);
 
 
     useEffect(() => {
@@ -45,16 +62,18 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex, inter
     //     console.log("Results:", results);
     //     },[])
 
- // Check for errors
-//   if (error) {
-//     console.error("Speech recognition error:", error);
-//   }
+    // Check for errors
+    //   if (error) {
+    //     console.error("Speech recognition error:", error);
+    //   }
 
-//   console.log("Results:", results);
-  console.log("Interim result:", interimResult);
+    //   console.log("Results:", results);
+    console.log("Interim result:", interimResult);
     const StartStopRecording = async () => {
         if (isRecording) {
+            setRecordLoading(true);
             stopSpeechToText();
+            setRecordLoading(false);
         } else {
             startSpeechToText();
         }
@@ -63,6 +82,7 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex, inter
     const updateUserAnswerInDb = async () => {
         console.log('userAnswer', userAnswer);
         setLoading(true);
+        setRecordLoading(true);
 
         // Prepare the feedback prompt for Gemini AI
         const feedbackPrompt = `Question: ${activeQuestionIndex} ${mockInterviewQuestion[activeQuestionIndex]?.question}, User Answer: ${userAnswer}, depending on the question and user answer for the given interview question, please give us a rating for the answer and feedback as an area of improvement, if any, in 3-5 lines. Provide it in JSON format with 'rating' and 'feedback' fields.`;
@@ -112,6 +132,7 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex, inter
                     });
                     setUserAnswer('');
                     setResults([]);
+                    setRecordLoading(false);
                 })
                 .catch((error) => {
                     setLoading(false);
@@ -126,11 +147,13 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex, inter
                         progress: undefined,
                         theme: "light",
                     });
+                    setRecordLoading(false);
                 });
         } catch (error) {
             console.error('Error generating feedback:', error);
             setLoading(false);
             toast.error('Failed to generate feedback. Please try again.');
+            setRecordLoading(false);
         }
     };
 
@@ -141,45 +164,129 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex, inter
         if (!isRecording && userAnswer.length > 0) {
             updateUserAnswerInDb();
         }
-    }, [userAnswer,isRecording]);
+    }, [userAnswer, isRecording]);
 
     return (
-        <Box display="flex" flexDirection="column" justifyContent="center" style={{backgroundColor:'black'}}>
+        <Box
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            style={{ backgroundColor: 'black' }}
+
+        >
+            <Box>
             <Box
                 display="flex"
                 flexDirection="column"
                 justifyContent="center"
                 alignItems="center"
-                // bgcolor="black"
                 borderRadius="8px"
-                p={5}
-                mt={10}
+                p={0}
+                // mt={isMobileSmallScreen ? 0 : 0}
+                sx={{
+                    boxShadow: '0 10px 30px rgba(255, 255, 255, 0.7)',
+                    borderRadius: '20px',
+                    border: 'none',
+                    padding: '20px',
+                    backgroundColor: '#000',
+                    height: isMobileSmallScreen ? '23vh' : '60vh', // Fixed height
+                    width: '100%', // Optionally set a fixed width
+                    position: 'relative', // Ensures absolute positioning works
+                }}
             >
-                <Image src={'/mywebcam.png'} width={400} height={400} style={{ position: 'absolute' }} alt="webcam" />
-                <Webcam
-                    mirrored={true}
-                    style={{ 
-                        height: 500, 
-                        width: '100%', 
-                        zIndex: 10,  // Ensure the webcam is on top
-                        backgroundColor: 'transparent'  // Set the webcam background to transparent
+                {
+                    webCamEnabled ?
+                        (
+                            <Webcam
+                                onUserMedia={() => setWebCamEnabled(true)}
+                                onUserMediaError={() => setWebCamEnabled(false)}
+                                mirrored={true}
+                                style={{
+                                    position: 'absolute',
+                                    top: 0,
+                                    left: 0,
+                                    width: '100%',
+                                    height: '100%',
+                                    objectFit: 'cover', // Makes sure the webcam fills the box
+                                    zIndex: 10,
+                                    backgroundColor: 'transparent',
+                                }}
+                            />
+                        )
+                        :
+                        (
+                            <Image
+                                src={'/mywebcam.png'}
+                                alt="webcam"
+                                width={isMobileSmallScreen ? 150 : 300}
+                                height={isMobileSmallScreen ? 150 : 300}
+                                style={{
+                                    // position: 'absolute',
+                                    top: 0,
+                                    left: 0,
+                                    width: isMobileSmallScreen ? '50%' : isMoreSmallScreen? '60%' : '50%',
+                                    height: isMobileSmallScreen ? '90%' : isMoreSmallScreen? '70%' : '70%',
+                                    // objectFit: 'cover', // Makes sure the image fills the box
+                                    zIndex: 10,
+                                }}
+                            />
+                        )
+                }
+  
+                </Box>
+                <Button
+                    onClick={() => setWebCamEnabled(!webCamEnabled)}
+                    style={{
+                        // position: 'absolute',
+                        marginTop:'15px',
+                        marginBottom:'5px',
+                        width: isMobileSmallScreen ? '50px' : '50px', // Set equal width and height
+                        height: isMobileSmallScreen ? '50px' : '50px', 
+                        color: 'white',
+                        backgroundColor: '#2663eb',
+                        zIndex: 20,
+                        borderRadius:'80%'
                     }}
-                />
-            </Box>
+                >
+                    {webCamEnabled ? (<><VideocamOffIcon /> </>) : (<><VideocamIcon /> </>)}
+                </Button>
+                </Box>
+         
+
             <Button
-                disabled={loading}
+                disabled={recordLoading}
                 variant="outlined"
-                sx={{ my: 4 }}
                 onClick={StartStopRecording}
+                sx={{
+                    my: isMobileSmallScreen ? 1 : 4,
+                    '&.Mui-disabled': {
+                        borderColor: 'white',
+                        backgroundColor: '#2d2e2e',
+                        color: '#fff',
+                    },
+                }}
             >
                 {isRecording ? (
-                    <Typography sx={{ color: 'red', display: 'flex', gap: 2 }}>
-                        <MicIcon /> Stop Recording...
+                    <Typography
+                        sx={{
+                            color: 'red',
+                            display: 'flex',
+                            gap: 2,
+                            alignItems: 'center',
+                            ...blinkAnimation,
+                        }}
+                    >
+                        <MicIcon sx={{ animation: 'blink 1s infinite' }} /> Stop Recording...
                     </Typography>
-                ) :
+                ) : recordLoading ? (
+                    <Typography sx={{ color: '#fff', display: 'flex', gap: 2 }}>
+                        <CircularProgress size={20} sx={{ marginRight: '20px' }} /> Submitting
+                    </Typography>
+                ) : (
                     <Typography sx={{ color: '#fff', display: 'flex', gap: 2 }}>
                         Record Answer
-                    </Typography>}
+                    </Typography>
+                )}
             </Button>
         </Box>
     )
