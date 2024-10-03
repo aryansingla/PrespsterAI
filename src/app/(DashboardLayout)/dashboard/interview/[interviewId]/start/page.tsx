@@ -81,7 +81,7 @@ const Page = ({ params }) => {
                        
                         <Grid size={{xs:12}} sx={{ display: 'flex',flexDirection: isMobileSmallScreen ? 'column' : 'row', justifyContent: 'flex-end', marginTop: '-20px', gap: "10px", marginBottom:'20px' }}>
                             {activeQuestionIndex > 0 && (
-                                <Button sx={{ backgroundColor: '#2663eb', color: '#fff' }} onClick={() => setActiveQuestionIndex(activeQuestionIndex - 1)}>
+                                <Button sx={{ backgroundColor: '#2663eb', color: '#fff',marginTop:'10px' }} onClick={() => setActiveQuestionIndex(activeQuestionIndex - 1)}>
                                     Previous Question
                                 </Button>
                             )}

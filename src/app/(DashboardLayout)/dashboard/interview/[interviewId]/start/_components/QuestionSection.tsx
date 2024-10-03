@@ -40,6 +40,26 @@ const QuestionSection = ({ mockInterviewQuestion, activeQuestionIndex, setActive
           <Box style={{ padding: isMobileSmallScreen ? '2px':'20px', border: '1px', marginTop: isMobileSmallScreen ? '0px': '10px', borderRadius: '10px', backgroundColor: 'black' }}>
             <Grid container spacing={2}>
               {
+                isMobileSmallScreen ?
+                mockInterviewQuestion.map((question: any, index: any) => (
+                  <Grid size={{ xs: 2.5}} key={index}>
+                    <Typography
+                      onClick={() => setActiveQuestionIndex(index)}
+                      variant="body1"
+                      style={{ 
+                        color: '#fff', 
+                        padding: '10px', 
+                        backgroundColor: activeQuestionIndex === index ? '#6a91e6' : '#000', 
+                        cursor: 'pointer', 
+                        border: activeQuestionIndex !== index ? '1px solid white' : '0px solid white' }}
+                        borderRadius="30px"
+                    >
+                      Q {index + 1}.
+                    </Typography>
+                  </Grid>
+                ))
+
+                : 
                 mockInterviewQuestion.map((question: any, index: any) => (
                   <Grid size={{ xs: 6, sm: 4 }} key={index}>
                     <Typography
@@ -51,7 +71,9 @@ const QuestionSection = ({ mockInterviewQuestion, activeQuestionIndex, setActive
                     </Typography>
                   </Grid>
                 ))
+
               }
+             
               <Grid size={{ xs: 6, sm: 4 }}>
               <Button
                     onClick={() => textToSpeech(mockInterviewQuestion[activeQuestionIndex]?.question)}
