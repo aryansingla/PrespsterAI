@@ -1,16 +1,22 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import { Accordion, AccordionSummary, AccordionDetails, Box, Typography, Button } from '@mui/material';
+import { Accordion, AccordionSummary, AccordionDetails, Box, Typography, Button, Paper, useMediaQuery } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useRouter } from 'next/navigation';
-import axios from 'axios';  // Assuming you're using Axios for making API requests
+import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const Feedback = ({ params }) => {
+    const isMobileScreen = useMediaQuery('(max-width:600px)');
     const router = useRouter();
     const [feedBackList, setFeedBackList] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [expanded, setExpanded] = useState<number | null>(null);  // State for managing expanded panel (type is now number or null)
 
+
+    const handleAccordionChange = (panel) => (event, isExpanded) => {
+        setExpanded(isExpanded ? panel : false);  // Toggle the panel's expansion
+    };
 
     useEffect(() => {
         GetFeedBack();
@@ -47,17 +53,17 @@ const Feedback = ({ params }) => {
     };
 
     return (
-        <Box p={4}>
+        <Box p={isMobileScreen ? 1 :4}>
             {feedBackList.length === 0 ? (
                 <Typography variant="h5" color="#fff" fontWeight="bold">
                     No Interview Performed.
                 </Typography>
             ) : (
                 <>
-                    <Typography variant="h3" color="green" fontWeight="bold">
+                    <Typography color="green" fontWeight="bold" sx={{fontSize:'30px'}}>
                         Congratulations
                     </Typography>
-                    <Typography variant="h4" fontWeight="bold" color="#fff">
+                    <Typography fontWeight="bold" color="#fff" sx={{fontSize:'30px'}}>
                         Here is your Interview Feedback
                     </Typography>
                     <Typography variant="body1" color="#fff">
@@ -65,24 +71,29 @@ const Feedback = ({ params }) => {
                     </Typography>
 
                     {feedBackList.map((item, index) => (
-                        <Accordion key={index} sx={{ mt: 3 }}>
-                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                                <Typography color="#000">{item?.question}</Typography>
+                        <Accordion 
+                        key={index} 
+                        expanded={expanded === index}
+                        sx={{ mt: 3, backgroundColor:'#171717' }}
+                        onChange={handleAccordionChange(index)}
+                        >
+                            <AccordionSummary expandIcon={<ExpandMoreIcon sx={{color:'#fff'}}/>}>
+                                <Typography color="#708ecf">{item?.question}</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
                                 <Box display="flex" flexDirection="column" gap={2}>
                                     <Typography color="error">
                                         <strong>Rating: </strong>{item?.rating}
                                     </Typography>
-                                    <Typography variant="body2" bgcolor="red.50" color="error" p={2} border={1} borderRadius={1}>
-                                        <strong>Your answer: </strong>{item?.userAns}
-                                    </Typography>
-                                    <Typography variant="body2" bgcolor="green.50" color="green" p={2} border={1} borderRadius={1}>
-                                        <strong>Correct answer: </strong>{item?.correctAns}
-                                    </Typography>
-                                    <Typography variant="body2" bgcolor="blue.50" color="blue" p={2} border={1} borderRadius={1}>
-                                        <strong>Feedback: </strong>{item?.feedback}
-                                    </Typography>
+                                    <Paper  sx={{backgroundColor:'#c1c3c7',padding:'20px 10px'}}>
+                                        <Typography><strong>Your answer: </strong>{item?.userAns}</Typography>
+                                    </Paper>
+                                    <Paper  sx={{backgroundColor:'#c1c3c7',padding:'20px 10px'}}>
+                                    <Typography sx={{color:'#2b6e07'}}><strong>Correct answer: </strong>{item?.correctAns}</Typography>
+                                        </Paper>
+                                        <Paper  sx={{backgroundColor:'#c1c3c7',padding:'20px 10px'}}>
+                                        <Typography sx={{color:'#053963'}}><strong>Feedback: </strong>{item?.feedback}</Typography>
+                                        </Paper>
                                 </Box>
                             </AccordionDetails>
                         </Accordion>
