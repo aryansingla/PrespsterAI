@@ -13,7 +13,7 @@ const Landingpage2 = () => {
 
 
     return (
-        <Box sx={{ background: 'linear-gradient(180deg, #0f1422, #1e2837)', paddingTop: '50px' }}>
+        <Box sx={{ background: 'linear-gradient(180deg, #0f1422, #1e2837)', paddingTop: '50px', paddingBottom:'120px' }}>
             <Box sx={{
                 textAlign: 'center',
                 display: 'flex',
@@ -48,15 +48,14 @@ const Landingpage2 = () => {
                         Our AI Assistant provides thorough and immersive interview practice sessions, helping you master interviews and boost your confidence for any interview situation.
                     </Typography>
                 </Box>
-                <Box sx={{ width: isMobileScreen ? '75%' : isTabScreen ? '85%' : isLargeScreen ? '60%' : '40%', marginTop: '40px' }}>
-                    <Grid container spacing={1}>
-                        <Grid size={{ xs: 12, sm: 6 ,md:3.5}}>
-                        <Box
+                <Box sx={{ width: isMobileScreen ? '75%' : isTabScreen ? '85%' : isLargeScreen ? '80%' : '60%', marginTop: '40px', display:'flex', flexWrap:'wrap',gap:4, justifyContent:'center' }}>
+                    <Box
                         sx={{
                             display: 'flex',
                             alignItems: 'center',
-                            padding: '10px 0px',
-                            backgroundColor: '#fff'
+                            padding: '10px 15px',
+                            backgroundColor: '#fff',
+                            borderRadius:'10px',
                         }}
                     >
                         <AutoAwesomeIcon sx={{ fontSize: 40, color: '#2663eb', marginRight: '10px' }} />
@@ -70,15 +69,13 @@ const Landingpage2 = () => {
                             Q&A Training
                         </Typography>
                     </Box>
-
-                        </Grid>
-                        <Grid size={{ xs: 12, sm: 6 ,md:3.5}}>
                         <Box
                         sx={{
                             display: 'flex',
                             alignItems: 'center',
-                            padding: '10px 0px',
-                            backgroundColor: '#fff'
+                            padding: '10px 15px',
+                            backgroundColor: '#fff',
+                            borderRadius:'10px',
                         }}
                     >
                         <AutoAwesomeIcon sx={{ fontSize: 40, color: '#2663eb', marginRight: '10px' }} />
@@ -93,14 +90,13 @@ const Landingpage2 = () => {
                         </Typography>
                     </Box>
 
-                        </Grid>
-                        <Grid size={{ xs: 12, sm: 6 ,md:3.5}}>
                         <Box
                         sx={{
                             display: 'flex',
                             alignItems: 'center',
-                            padding: '10px 0px',
-                            backgroundColor: '#fff'
+                            padding: '10px 15px',
+                            backgroundColor: '#fff',
+                            borderRadius:'10px',
                         }}
                     >
                         <AutoAwesomeIcon sx={{ fontSize: 40, color: '#2663eb', marginRight: '10px' }} />
@@ -116,14 +112,13 @@ const Landingpage2 = () => {
                         </Typography>
                     </Box>
 
-                        </Grid>
-                        <Grid size={{ xs: 12, sm: 6 ,md:3.5}}>
                         <Box
                         sx={{
                             display: 'flex',
                             alignItems: 'center',
-                            padding: '10px 0px',
-                            backgroundColor: '#fff'
+                            padding: '10px 15px',
+                            backgroundColor: '#fff',
+                            borderRadius:'10px',
                         }}
                     >
                         <AutoAwesomeIcon sx={{ fontSize: 40, color: '#2663eb', marginRight: '10px' }} />
@@ -138,14 +133,13 @@ const Landingpage2 = () => {
                         </Typography>
                     </Box>
 
-                        </Grid>
-                        <Grid size={{ xs: 12, sm: 6 ,md:3.5}}>
                         <Box
                         sx={{
                             display: 'flex',
                             alignItems: 'center',
-                            padding: '10px 0px',
-                            backgroundColor: '#fff'
+                            padding: '10px 15px',
+                            backgroundColor: '#fff',
+                            borderRadius:'10px',
                         }}
                     >
                         <AutoAwesomeIcon sx={{ fontSize: 40, color: '#2663eb', marginRight: '10px' }} />
@@ -160,14 +154,13 @@ const Landingpage2 = () => {
                         </Typography>
                     </Box>
 
-                        </Grid>
-                        <Grid size={{ xs: 12, sm: 6 ,md:3.5}}>
                         <Box
                         sx={{
                             display: 'flex',
                             alignItems: 'center',
-                            padding: '10px 0px',
-                            backgroundColor: '#fff'
+                            padding: '10px 15px',
+                            backgroundColor: '#fff',
+                            borderRadius:'10px',
                         }}
                     >
                         <AutoAwesomeIcon sx={{ fontSize: 40, color: '#2663eb', marginRight: '10px' }} />
@@ -182,14 +175,13 @@ const Landingpage2 = () => {
                         </Typography>
                     </Box>
 
-                        </Grid>
-                        <Grid size={{ xs: 12, sm: 6 ,md:3.5}}>
                         <Box
                         sx={{
                             display: 'flex',
                             alignItems: 'center',
-                            padding: '10px 0px',
-                            backgroundColor: '#fff'
+                            padding: '10px 15px',
+                            backgroundColor: '#fff',
+                            borderRadius:'10px',
                         }}
                     >
                         <AutoAwesomeIcon sx={{ fontSize: 40, color: '#2663eb', marginRight: '10px' }} />
@@ -204,14 +196,13 @@ const Landingpage2 = () => {
                         </Typography>
                     </Box>
 
-                        </Grid>
-                        <Grid size={{ xs: 12, sm: 6 ,md:3.5}}>
                         <Box
                         sx={{
                             display: 'flex',
                             alignItems: 'center',
-                            padding: '10px 0px',
-                            backgroundColor: '#fff'
+                            padding: '10px 15px',
+                            backgroundColor: '#fff',
+                            borderRadius:'10px',
                         }}
                     >
                         <AutoAwesomeIcon sx={{ fontSize: 40, color: '#2663eb', marginRight: '10px' }} />
@@ -226,14 +217,13 @@ const Landingpage2 = () => {
                         </Typography>
                     </Box>
 
-                        </Grid>
-                        <Grid size={{ xs: 12, sm: 6 ,md:3.5}}>
                         <Box
                         sx={{
                             display: 'flex',
                             alignItems: 'center',
-                            padding: '10px 0px',
-                            backgroundColor: '#fff'
+                            padding: '10px 15px',
+                            backgroundColor: '#fff',
+                            borderRadius:'10px',
                         }}
                     >
                         <AutoAwesomeIcon sx={{ fontSize: 40, color: '#2663eb', marginRight: '10px' }} />
@@ -247,11 +237,6 @@ const Landingpage2 = () => {
                             Company-Specific Insights
                         </Typography>
                     </Box>
-
-                        </Grid>
-                     
-                      
-                    </Grid>
                  
 
 
