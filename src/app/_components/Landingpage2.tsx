@@ -86,7 +86,7 @@ const Landingpage2 = () => {
                                 fontSize: isMobileScreen ? '14px' : '20px',
                             }}
                         >
-                            GPT-3.5 & GPT-4
+                            Gemini Support
                         </Typography>
                     </Box>
 

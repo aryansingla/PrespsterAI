@@ -1,14 +1,29 @@
 'use client'
-import { Avatar, Box, Button, Card, CardContent, Typography, useMediaQuery } from '@mui/material'
+import { Avatar, Box, Button, Card, CardContent, Stack, Typography, useMediaQuery } from '@mui/material'
 import Grid from '@mui/material/Grid2';
 import React from 'react'
 import GppGoodIcon from '@mui/icons-material/GppGood';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import Slider from "react-slick";
+import { styled } from '@mui/material/styles';
+
+
 
 const Landingpage3 = () => {
+
+    var settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      };
+
     const isMobileScreen = useMediaQuery('(max-width:600px)');
     const isTabScreen = useMediaQuery('(max-width:900px)');
+    const isSomeLargeScreen = useMediaQuery('(max-width:1500px)');
     const isLargeScreen = useMediaQuery('(max-width:1800px)');
+
 
     const testimonialsArray1 = [
         {
@@ -39,95 +54,95 @@ const Landingpage3 = () => {
     ];
 
 
-    const testimonialsArray2 = [
-        {
-            name: 'Ethan Clarke',
-            username: '@ethan_cl',
-            feedback: 'I loved the instant feedback! It helped me fine-tune my responses quickly and effectively.',
-        },
-        {
-            name: 'Emma Davis',
-            username: '@emma_davis',
-            feedback: 'A fantastic app that got me interview-ready in no time. Highly recommend!',
-        },
-        {
-            name: 'Lucas Miller',
-            username: '@lucas_m',
-            feedback: 'I was blown away by how real the mock interviews felt. This app made all the difference in my preparation.',
-        },
-        {
-            name: 'Mia Garcia',
-            username: '@miagarcia',
-            feedback: 'The questions covered a wide range of topics. I felt ready for anything after using this app.',
-        },
-        {
-            name: 'Liam Harris',
-            username: '@liamharris',
-            feedback: 'An absolute must-have for interview prep! The feedback was precise and helpful.',
-        }
-    ];
 
+    const allTestimonials = [...testimonialsArray1, ...testimonialsArray1];
 
+    const SliderBox = styled(Box)(() => ({
+        display: 'flex',
+        animation: `scroll 25s linear infinite`,
+        "@keyframes scroll": {
+            "0%": {
+                transform: "translateX(0)",
+            },
+            "100%": {
+                transform: `translateX(-${(allTestimonials.length / 2) * 100}%)`,
+            },
+        },
+    }));
 
 
     return (
         <Box sx={{ backgroundColor: '#000', paddingTop: '50px', paddingBottom: '120px' }}>
-            <Box sx={{
-                textAlign: 'center',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                margin: 'auto'
-            }}
-            >
-                <Box sx={{ width: isMobileScreen ? '100%' : isTabScreen ? '95%' : '65%' }}>
-                    <Typography
-                        color="#fff"
+        <Box sx={{
+            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            margin: 'auto'
+        }}>
+            <Box>
+                    <Typography color="#2663eb"
                         sx={{
-                            padding: '20px 0px',
+                            padding: '30px 0px 0px 0px',
                             fontWeight: 'bold',
-                            fontSize: isMobileScreen ? '28px' : '40px',
-                            // lineHeight: isMobileScreen ? '50px' : '65px'
-                        }}
-                    >
-                        All the resources you need to ace your next interview.
-                    </Typography>
+                            fontSize: '25px'
+                        }} >Wall of Love!!</Typography>
                 </Box>
-                <Box sx={{ width: '100%' }}>
-                    <Card sx={{
-                        width: isMobileScreen ? '90%' : isTabScreen ? '55%' : '35%',
-                        padiing: '15px 25px',
-                        background: 'linear-gradient(180deg, #0f1422, #1e2837)',
-                        borderRadius: '20px',
-                        height: isMobileScreen ? '320px': isTabScreen ? '300px':isLargeScreen ?'300px' :'250px',
-                        overflow: 'hidden',
-                    }}>
-                        <CardContent>
-                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                                <Avatar sx={{ backgroundColor: '#2663eb' }}>OP</Avatar>
-                                <Box>
-                                    <Typography sx={{ color: '#fff', fontSize: '25px' }}>
-                                        John Doe
-                                    </Typography>
-                                    <Typography sx={{ color: '#bbb', fontSize: '16px' }}>
-                                        @john_doe123
-                                    </Typography>
-                                </Box>
-                            </Box>
-                            <Box sx={{ marginTop: '10px' }}>
-                                <Typography gutterBottom sx={{ color: '#fff', fontSize: '20px', textAlign: 'left' }}>
-                                    This AI interview platform was a game-changer! The tailored questions and instant feedback helped me improve quickly. I felt more confident and prepared for my actual interview, which I aced thanks to this app!
-                                </Typography>
-                            </Box>
-                        </CardContent>
+            <Box sx={{ width: isMobileScreen ? '100%' : isTabScreen ? '95%' : isSomeLargeScreen ? '75%': isLargeScreen ? '45%' :'45%' }}>
+                <Typography
+                    color="#fff"
+                    sx={{
+                        padding: '20px 0px',
+                        fontWeight: 'bold',
+                        fontSize: isMobileScreen ? '28px' : '60px',
+                    }}
+                >
+                    Let the results shine for themselves.
+                </Typography>
+            </Box>
 
-
-                    </Card>
+            <Box sx={{ width: '100%' }}>
+                <Box  sx={{ display:'flex',flexDirection:'row', gap: '15px', overflow: 'hidden' }}>
+                   
+                    {
+                        allTestimonials?.map((item,index)=>(
+                            <SliderBox style={{width:'90%'}}>
+                            <Card sx={{
+                                p: '15px 25px',
+                                background: 'linear-gradient(180deg, #0f1422, #1e2837)',
+                                borderRadius: '20px',
+                                height: isMobileScreen ? '320px' : isTabScreen ? '300px' : isLargeScreen ? '300px' : '250px',
+                                overflow: 'hidden',
+                                width:'30rem',
+                            }}>
+                                <CardContent>
+                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                        <Avatar sx={{ backgroundColor: '#2663eb' }}>OP</Avatar>
+                                        <Box>
+                                            <Typography sx={{ color: '#fff', fontSize: '25px' }}>
+                                                {item?.name}
+                                            </Typography>
+                                            <Typography sx={{ color: '#bbb', fontSize: '16px',textAlign:'left' }}>
+                                            {item?.username}
+                                            </Typography>
+                                        </Box>
+                                    </Box>
+                                    <Box sx={{ marginTop: '10px' }}>
+                                        <Typography gutterBottom sx={{ color: '#fff', fontSize: '20px', textAlign: 'left' }}>
+                                        {item?.feedback}
+                                        </Typography>
+                                    </Box>
+                                </CardContent>
+                            </Card>
+                        </SliderBox>
+                        ))
+                    }
+                   
                 </Box>
-
             </Box>
         </Box>
+    </Box>
     )
 }
 
