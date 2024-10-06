@@ -10,12 +10,18 @@ import OuterFooter from './_components/OuterFooter'
 const Home = () => {
   return (
     <Box>
-      <Box><OuterNavbar/></Box>
-      <Box><Landingpage1/></Box>
-      <Box><Landingpage2/></Box>
-      <Box><Landingpage3/></Box>
-      <Box><Landingpage4/></Box>
-      <Box><OuterFooter/></Box>
+      <Box sx={{
+        position: 'fixed', 
+        width: '100%', 
+        zIndex: 99, 
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+        backdropFilter: 'blur(10px)'
+      }}><OuterNavbar /></Box>
+      <Box sx={{paddingTop:'80px'}}><Landingpage1 /></Box>
+      <Box><Landingpage2 /></Box>
+      <Box><Landingpage3 /></Box>
+      <Box><Landingpage4 /></Box>
+      <Box><OuterFooter /></Box>
 
 
 

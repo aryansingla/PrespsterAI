@@ -11,6 +11,8 @@ import XIcon from '@mui/icons-material/X';
 const OuterFooter = () => {
     const isMobileScreen = useMediaQuery('(max-width:600px)');
     const isTabScreen = useMediaQuery('(max-width:900px)');
+    const isMdPoint = useMediaQuery('(max-width:1200px)');
+
     const isMediumScreen = useMediaQuery('(max-width:1500px)');
     const isLargeScreen = useMediaQuery('(max-width:1800px)');
 
@@ -18,31 +20,35 @@ const OuterFooter = () => {
 
 
     return (
-        <Box sx={{ backgroundColor: '#000', paddingTop: '50px', paddingBottom: '120px' }}>
-            <Box sx={{ width: '60%', margin: 'auto' }}>
+        <Box sx={{ backgroundColor: '#000', paddingTop: isMobileScreen ? '0px':'50px', paddingBottom: '120px' }}>
+            <Box sx={{ width: isMobileScreen ? '92%' :isMediumScreen ? '75%' : isLargeScreen ? '70%':'60%', margin: 'auto' }}>
                 <Grid container>
                     <Grid size={{ xs: 12, lg: 5 }}>
                         <Box>
-                            <Typography sx={{ color: '#2663eb' }}>
+                            <Typography sx={{ color: '#2663eb',cursor: 'default' }}>
                                 Prepster AI
                             </Typography>
 
 
-                            <Typography sx={{ color: '#fff', marginTop: '20px' }}>
+                            <Typography sx={{ color: '#fff', marginTop: '20px' ,cursor: 'default'}}>
                                 Unleash Your Interview Potential: Boost Your Career with AI-Driven Mock Interviews and Professional Guidance
                             </Typography>
                             <Box sx={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}>
                                 <MailIcon sx={{ color: '#fff', marginRight: '8px' }} /> {/* Add some margin for spacing */}
-                                <Typography sx={{ color: '#2663eb' }}>
+                                <Typography sx={{ color: '#2663eb',
+                                '&:hover': {
+                                    textDecoration: 'underline',
+                                    cursor: 'default'
+                                } }}>
                                     contactaryansingla@gmail.com
                                 </Typography>
                             </Box>
                         </Box>
 
                     </Grid>
-                    <Grid size={{ xs: 6, lg: 3.5 }}>
-                        <Box sx={{ textAlign: 'right' }}>
-                            <Typography sx={{ color: '#2663eb' }}>
+                    <Grid size={{ xs: 6, lg: 3.5 }} sx={{marginTop:isMdPoint ? '60px':'0px'}}>
+                        <Box sx={{ textAlign: isMdPoint ? 'left':'right' }}>
+                            <Typography sx={{ color: '#2663eb',cursor: 'default' }}>
                                 Product
                             </Typography>
                             <Typography sx={{
@@ -68,9 +74,9 @@ const OuterFooter = () => {
                             </Typography>
                         </Box>
                     </Grid>
-                    <Grid size={{ xs: 6, lg: 3.5 }}>
-                        <Box sx={{ textAlign: 'right' }}>
-                            <Typography sx={{ color: '#2663eb' }}>
+                    <Grid size={{ xs: 6, lg: 3.5 }} sx={{marginTop:isMdPoint ? '60px':'0px'}}>
+                        <Box sx={{ textAlign: isMdPoint ? 'left':'right' }}>
+                            <Typography sx={{ color: '#2663eb',cursor: 'default' }}>
                                 Legal
                             </Typography>
                             <Typography sx={{
@@ -86,14 +92,16 @@ const OuterFooter = () => {
                         </Box>
                     </Grid>
                 </Grid>
-                <Grid container sx={{ marginTop: '120px' }}>
+                <Grid container sx={{ marginTop: isMobileScreen ? '60px' :'120px' }}>
                     <Grid size={{ xs: 12, md: 10 }}>
-                        <Typography sx={{ color: '#5e5f61' }}>
+                        <Typography sx={{ color: '#5e5f61',textAlign: isMobileScreen ? 'center':'left',cursor: 'default' }}>
                             &copy; 2024 Prepster AI. All rights reseved
                         </Typography>
                     </Grid>
-                    <Grid size={{ xs: 12, md: 2 }} sx={{ textAlign: 'right' }}>
+                    <Grid size={{ xs: 12, md: 2 }} sx={{ textAlign: isMobileScreen ? 'center':'right', marginTop: isMobileScreen ?'10px':'0px' }}>
+                        <Link href="https://x.com/singlaaryan11">
                         <XIcon sx={{ color: '#fff', marginRight: '8px',cursor:'pointer' }} />
+                        </Link>
                     </Grid>
                 </Grid>
             </Box>

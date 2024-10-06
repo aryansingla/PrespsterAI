@@ -16,7 +16,7 @@ const Landingpage4 = () => {
 
 
     return (
-        <Box sx={{ backgroundColor: '#000', paddingTop: '50px', paddingBottom: '120px' }}>
+        <Box sx={{ backgroundColor: '#000', paddingTop: '50px', paddingBottom: isMobileScreen ? '50px':'120px' }}>
             <Box sx={{
                 textAlign: 'center',
                 display: 'flex',
@@ -73,7 +73,7 @@ const Landingpage4 = () => {
                         cursor:'pointer',
                         fontSize: isMobileScreen? '18px' : '20px',
                         fontWeight: 'bold',
-                        marginBottom:'30px'
+                        marginBottom:'30px',
                         }}>Get Started</Button>
                         </Link>
 

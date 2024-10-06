@@ -36,7 +36,7 @@ const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function OuterNavbar() {
-    const isScreenSmall = useMediaQuery('(max-width:800px)');
+    const isScreenSmall = useMediaQuery('(max-width:1000px)');
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
     const [loading, setLoading] = React.useState(false);
@@ -64,7 +64,7 @@ function OuterNavbar() {
     };
 
     const DrawerList = (
-        <Box sx={{ width: 300, backgroundColor: 'black', height: '100%' }} role="presentation" onClick={toggleDrawer(false)}>
+        <Box sx={{ width: 300, height: '100%' }} role="presentation" onClick={toggleDrawer(false)}>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '30px', paddingX: '16px' }}>
                 <Typography sx={{ fontWeight: '600', color: '#fff', fontSize: '22px' }}>
                     PREPSTER AI
