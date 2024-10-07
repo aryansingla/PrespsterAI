@@ -5,7 +5,7 @@ export const MsgPasswordUpperLetterError = 'MSG_PASSWORD_UPPER_LETTER_ERROR'
 export const msgPasswordNumberLetterError = 'MSG_PASSWORD_NUMBER_LETTER_ERROR'
 export const MsgPasswordSpecialLetterError = 'MSG_PASSWORD_SPECIAL_LETTER_ERROR'
 
-const getMsg = (m : any) => {
+const getMsg = (m) => {
   if (m === msgPasswordLengthError) return msgPasswordLengthError
   if (m === MsgPasswordLowerLetterError) return MsgPasswordLowerLetterError
   if (m === MsgPasswordUpperLetterError) return MsgPasswordUpperLetterError
@@ -14,7 +14,7 @@ const getMsg = (m : any) => {
   return ''
 }
 
-function charIsLetter(char : any) {
+function charIsLetter(char) {
   if (typeof char !== 'string') {
     return false
   }
@@ -22,7 +22,7 @@ function charIsLetter(char : any) {
   return /^[a-zA-Z]+$/.test(char)
 }
 
-export default function passCheck(strVar : any) {
+export default function passCheck(strVar) {
   let upper = 0
   let lower = 0
   let number = 0
