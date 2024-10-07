@@ -1,11 +1,31 @@
-{
+// {
 
+//   "extends": [
+//     "next/core-web-vitals",
+//     "next/typescript"
+//   ],
+
+//   "rules": {
+//     "no-unused-vars": "off"
+//   }
+// }
+
+
+{
   "extends": [
     "next/core-web-vitals",
-    "next/typescript"
+    "plugin:@typescript-eslint/recommended" // Extend recommended TypeScript rules
   ],
-
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
   "rules": {
-    "no-unused-vars": "off"
+    "@typescript-eslint/no-unused-vars": [
+      "warn", // Or "error" if you want it to block builds
+      {
+        "vars": "all", // Checks all variables
+        "args": "after-used", // Checks unused function arguments
+        "ignoreRestSiblings": false // Do not ignore unused rest siblings
+      }
+    ]
   }
 }
