@@ -11,7 +11,7 @@ import { styled } from '@mui/material/styles';
 
 const Landingpage3 = () => {
 
-    var settings = {
+    const settings = {
         dots: true,
         infinite: true,
         speed: 500,

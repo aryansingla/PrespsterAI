@@ -1,5 +1,5 @@
 "use client";
-import { useState, ChangeEvent, useEffect } from "react";
+import React,{ useState, useEffect } from "react";
 import {
     Box,
     Typography,
@@ -7,10 +7,6 @@ import {
     Stack,
     Container,
     CircularProgress,
-    Dialog,
-    DialogContent,
-    CardContent,
-    Divider,
     useMediaQuery
 } from "@mui/material";
 import Grid from '@mui/material/Grid2';
@@ -29,7 +25,7 @@ import FormikTextFieldPassword from "@/components/common/FormComponents/FormikTe
 // import passCheck from "@/helper/passCheck";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import Image from "next/image";
+// import Image from "next/image";
 
 function AuthLogin() {
     //   const API_URL = getApiUrl();
@@ -45,17 +41,17 @@ function AuthLogin() {
     //     setCurrentError(res.errorMsgs);
     //   }, [newPassword]);
 
-    const signInWithToken = async (
-        token: String,
-        email: String,
-        name: String,
-    ) => {
-        await signIn("credentials", {
-            token: token,
-            email: email,
-            name: name,
-        });
-    };
+    // const signInWithToken = async (
+    //     token: string,
+    //     email: string,
+    //     name: string,
+    // ) => {
+    //     await signIn("credentials", {
+    //         token: token,
+    //         email: email,
+    //         name: name,
+    //     });
+    // };
 
     const handlePasswordChange = (e: any) => {
         setPassword(e.target.value);

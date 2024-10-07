@@ -1,15 +1,11 @@
 "use client";
-import { useEffect } from "react";
+import React,{ useEffect } from "react";
 import {
     Box,
     Typography,
-    FormGroup,
-    FormControlLabel,
     Button,
-    Checkbox,
     CircularProgress,
     Stack,
-    Divider,
     useMediaQuery
 } from "@mui/material";
 import Grid from '@mui/material/Grid2';
@@ -26,22 +22,10 @@ import passCheck from "@/helper/passCheck";
 import PasswordHintText from "./PasswordHintText";
 import Link from "next/link";
 import { toast } from "react-toastify";
-import Image from "next/image";
 
 // import ErrorHandler from "@/helper/ErrorHandler";
 
 
-interface CountryList {
-    id: string;
-    name: string;
-    phonecode: string;
-}
-interface Department {
-    id: string;
-    name: string;
-}
-
-const regex = /^[A-Za-z0-9]*$/;
 function AuthRegister() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -77,7 +61,7 @@ function AuthRegister() {
         setEmail(e.target.value);
     };
 
-    const handleFormSubmit = (val: any, setLoading: any, setErrors) => {
+    const handleFormSubmit = (val: any, setLoading: any) => {
         setLoading(true);
         const requestOptions = {
             method: "POST",
@@ -159,7 +143,7 @@ function AuthRegister() {
                             .required("Required"),
                     })}
                     onSubmit={(values: object, { setSubmitting, setErrors }) =>
-                        handleFormSubmit(values, setSubmitting, setErrors)
+                        handleFormSubmit(values, setSubmitting)
                     }
                 >
                     {({ handleSubmit, errors, isSubmitting }) => {
