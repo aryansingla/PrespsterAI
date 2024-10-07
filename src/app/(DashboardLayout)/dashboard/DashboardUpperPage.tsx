@@ -1,20 +1,16 @@
 "use client"
-import { Box, Button, CircularProgress, Container, Typography, useMediaQuery } from '@mui/material';
+import { Button, Container, Typography, useMediaQuery } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react';
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Grid from '@mui/material/Grid2';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { Form, Formik } from 'formik';
 import * as Yup from "yup";
-import FormikTextField from '@/components/common/FormComponents/FormikTextField';
-import moment from "moment";
-import { v4 as uuidv4 } from 'uuid';
 import { chatSession } from '@/utils/GeminiAIModel';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
@@ -26,7 +22,7 @@ import Image from 'next/image';
 const DashboardUpperPage = () => {
     const isScreenSmall = useMediaQuery('(max-width:1080px)');
     const isMobileScreen = useMediaQuery('(max-width:600px)');
-    const isMoreLowerScreen = useMediaQuery('(max-width:380px)');
+    // const isMoreLowerScreen = useMediaQuery('(max-width:380px)');
 
 
     const router = useRouter();
@@ -73,7 +69,7 @@ const DashboardUpperPage = () => {
 
         const result = await chatSession.sendMessage(inputPrompt);
         const responseText = await result.response.text();
-        let MockJsonResponse = responseText.replace(/```json/g, '')
+        const MockJsonResponse = responseText.replace(/```json/g, '')
             .replace(/```/g, '')
             .replace(/[\n\r\t]/g, '');
 
@@ -224,7 +220,7 @@ const DashboardUpperPage = () => {
                                 jobExperience: Yup.string().required("Required"),
                             })}
                         >
-                            {({ handleSubmit, errors }) => {
+                            {({ handleSubmit }) => {
                                 return (
                                     <Container>
                                         <Form onSubmit={handleSubmit} autoComplete="off">

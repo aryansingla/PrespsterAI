@@ -1,11 +1,10 @@
 "use client"
-import { Box, Card, CardContent, CardHeader, Paper, Skeleton, Typography, useMediaQuery } from '@mui/material'
+import { Box, Paper, Skeleton, Typography, useMediaQuery } from '@mui/material'
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid2';
 import InterviewItemCard from './InterviewItemCard';
 import axios from 'axios';
-import { toast } from 'react-toastify';
 import Image from 'next/image';
 
 const DashboardLowerPortion = () => {
@@ -52,16 +51,7 @@ const DashboardLowerPortion = () => {
                 })
                 .catch((error) => {
                     setLoading(false);
-                    // toast.info(`${error?.response?.data?.message}`, {
-                    //     position: "bottom-left",
-                    //     autoClose: 5000,
-                    //     hideProgressBar: false,
-                    //     closeOnClick: true,
-                    //     pauseOnHover: true,
-                    //     draggable: true,
-                    //     progress: undefined,
-                    //     theme: "light",
-                    // });
+                   console.log(error);
                 });
         } catch (error) {
             console.error('Error fetching interview list:', error);
