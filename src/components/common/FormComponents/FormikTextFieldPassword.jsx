@@ -1,11 +1,11 @@
 import React , {useState} from 'react'
 import { Field, connect, getIn } from 'formik'
 import { TextField } from 'formik-mui'
-import { Box , InputAdornment,IconButton, Tooltip } from '@mui/material'
+import { Box , InputAdornment,IconButton,Tooltip } from '@mui/material'
 import FormikErrorMessage from '../Heading/FormikErrorMessage'
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-const FormikTextFieldValidationPassword = (props:any) => {
+const FormikTextFieldPassword = (props) => {
     const error = getIn(props?.formik?.errors, props?.name)
     const touched = getIn(props?.formik?.touched, props?.name)
     const [showPassword, setShowPassword] = useState(false);
@@ -27,12 +27,14 @@ const FormikTextFieldValidationPassword = (props:any) => {
                 label={<span>{props.label} {props.mandatory && <span style={{color : 'red'}}>*</span>}</span>}
                 autoComplete={props.autoComplete || 'off'}
                 value={props.value}
+                disabled={props.disabled}
                 onChange={props.handleChange}
                 onKeyDown={handleKeyDown}
                 placeholder={props.placeholder}
+                // InputLabelProps={{ shrink: true }} 
                 // title={props.label}
-                type={showPassword ? "text" : "password"}
                 inputProps={props.inputProps}
+                type={showPassword ? "text" : "password"}
                 // error={!!error}
                 // helperText={null}
                 sx={{
@@ -61,9 +63,11 @@ const FormikTextFieldValidationPassword = (props:any) => {
                     ),
                   }}
             />
-         
+            <FormikErrorMessage
+                title={ touched && error ? error : null}
+            />
         </Box>
     )
 }
 
-export default connect(FormikTextFieldValidationPassword)
+export default connect(FormikTextFieldPassword)

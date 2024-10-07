@@ -53,10 +53,10 @@ function AuthLogin() {
     //     });
     // };
 
-    const handlePasswordChange = (e: any) => {
+    const handlePasswordChange = (e) => {
         setPassword(e.target.value);
     };
-    const handleEmailChange = (e: any) => {
+    const handleEmailChange = (e) => {
         setEmail(e.target.value);
     };
 

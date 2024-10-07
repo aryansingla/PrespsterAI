@@ -4,7 +4,7 @@ import { TextField } from 'formik-mui'
 import { Box } from '@mui/material'
 import FormikErrorMessage from '../Heading/FormikErrorMessage'
 
-const FormikTextField = (props:any) => {
+const FormikTextField = (props) => {
     const error = getIn(props?.formik?.errors, props?.name)
     const touched = getIn(props?.formik?.touched, props?.name)
     

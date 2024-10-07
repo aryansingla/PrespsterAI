@@ -50,7 +50,7 @@ import {
       return subdomain;
   }
   
-  export const metadata: Metadata = {
+  export const metadata = {
     title: "Login to SmartCorp HRM",
     description: "Smart Crop HRM",
     robots: {

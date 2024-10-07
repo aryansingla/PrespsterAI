@@ -3,7 +3,7 @@ import { Box, Card, CardContent, Typography, useMediaQuery } from '@mui/material
 import React from 'react'
 import OuterNavbar from './OuterNavbar'
 import { signOut, useSession } from "next-auth/react";
-import Navbar from './Navbar';
+import Navbar from './Navbar.jsx';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
 

@@ -36,15 +36,15 @@ const DashboardUpperPage = () => {
     const [jsonResponse, setJsonResponse] = useState([]);
 
 
-    const handleJobPositionChange = (e: any) => {
+    const handleJobPositionChange = (e) => {
         setJobPosition(e.target.value);
     }
 
-    const handleJobDescriptionChange = (e: any) => {
+    const handleJobDescriptionChange = (e) => {
         setJobDescription(e.target.value);
     }
 
-    const handleJobExperienceChange = (e: any) => {
+    const handleJobExperienceChange = (e) => {
         setJobExperience(e.target.value);
     }
 
@@ -61,7 +61,7 @@ const DashboardUpperPage = () => {
         jobExperience
     };
 
-    const handleSubmit = async (event: any) => {
+    const handleSubmit = async (event) => {
         setLoading(true);
         console.log(jobPosition, jobDescription, jobExperience);
 

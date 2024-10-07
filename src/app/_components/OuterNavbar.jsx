@@ -13,9 +13,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import axios from 'axios';
-import { signOut, useSession } from 'next-auth/react';
+import { signOut } from 'next-auth/react';
 import {
-    CircularProgress,
     Divider,
     Drawer,
     List,
@@ -23,7 +22,6 @@ import {
     ListItemButton,
     ListItemIcon,
     ListItemText,
-    Stack,
     useMediaQuery
 } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -32,76 +30,36 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import EmailIcon from '@mui/icons-material/Email';
 import CloseIcon from '@mui/icons-material/Close';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function Navbar() {
-    const isScreenSmall = useMediaQuery('(max-width:800px)');
-    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+function OuterNavbar() {
+    const isScreenSmall = useMediaQuery('(max-width:1000px)');
+    const [anchorElNav, setAnchorElNav] = React.useState(null);
+    const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [loading, setLoading] = React.useState(false);
     const [open, setOpen] = React.useState(false);
 
-    const session1 = useSession();
-    const userDetails = session1?.data?.user;
-
-    console.log('userDetails', userDetails);
-
-    const toggleDrawer = (newOpen: boolean) => () => {
+    const toggleDrawer = (newOpen) => () => {
         setOpen(newOpen);
     };
 
     const router = useRouter();
 
-    const BackendLogout = async () => {
-        setLoading(true)
-        const requestOptions = {
-            method: "POST",
-            url: `http://localhost:3000/api/auth/logout/`,
-            data: {},
-        };
-        axios(requestOptions)
-            .then(async () => {
-                await signOut()
-                    .then(() => {
-                        setLoading(false)
-                        window.location.replace('http://localhost:3000/auth/login');
-                    })
-                    .catch((error) => {
-                        setLoading(false);
-                        console.log(error);
-                        window.location.replace('http://localhost:3000/auth/login');
-                    })
-            })
-            .catch(async (error) => {
-                // ErrorHandler(error, error.response.data.message, 'single', 'error')
-                await signOut()
-                    .then(() => {
-                        setLoading(false)
-                        window.location.replace('http://localhost:3000/auth/login');
-                    })
-                    .catch(() => {
-                        setLoading(false)
-                        window.location.replace('http://localhost:3000/auth/login');
-                    })
-            });
-    };
 
-    const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+
+    const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
-    const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
 
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
-    };
-
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
     };
 
     const handleDashboardClick = () => {
@@ -116,17 +74,20 @@ function Navbar() {
         router.push('/contact-us');
     }
 
-    const getUserInitials = (name: string) => {
-        const nameArray = name?.split(' ');
-        if (nameArray.length > 1) {
-            return nameArray[0][0] + nameArray[1][0]; // First letter of first and last name
-        }
-        return nameArray[0][0]; // Single name, only use first letter
+    const handleLoginClick = () => {
+        router.push('/auth/login');
+    }
+
+    const handleSignupClick = () => {
+        router.push('/auth/signup');
+    }
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
     };
 
-
     const DrawerList = (
-        <Box sx={{ width: 300, backgroundColor: 'black', height: '100%' }} role="presentation" onClick={toggleDrawer(false)}>
+        <Box sx={{ width: 280, height: '100%' }} role="presentation" onClick={toggleDrawer(false)}>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '30px', paddingX: '16px' }}>
                 <Typography sx={{ fontWeight: '600', color: '#fff', fontSize: '22px' }}>
                     PREPSTER AI
@@ -242,6 +203,81 @@ function Navbar() {
                         <ListItemText primary="Contact Us" />
                     </ListItemButton>
                 </ListItem>
+                <ListItem key="4" disablePadding
+                    sx={{
+                        my: 2,
+                        color: 'white',
+                        display: 'block',
+                        mx: 2,
+                        position: 'relative', // Needed for the underline effect
+                        '&:hover': {
+                            color: '#2663eb',
+                            fontWeight: 600,
+                            transform: 'translateY(-3px)', // Slightly lift the text up
+                            transition: 'all 0.3s ease', // Smooth transition for the lift
+                        },
+                        '&:after': {
+                            content: '""',
+                            position: 'absolute',
+                            width: '100%',
+                            height: '3px', // Height of the underline
+                            bottom: 0,
+                            left: 0,
+                            background: 'linear-gradient(to right, #2663eb, #4facfe)', // Gradient underline
+                            transform: 'scaleX(0)',
+                            transition: 'transform 0.3s ease', // Animate the underline
+                            transformOrigin: 'bottom right',
+                        },
+                        '&:hover:after': {
+                            transform: 'scaleX(1)', // Show underline on hover
+                            transformOrigin: 'bottom left', // Animate from left to right
+                        }
+                    }}>
+                    <ListItemButton onClick={handleLoginClick}>
+                        {/* <ListItemIcon>
+                            <EmailIcon sx={{ color: '#fff' }} />
+                        </ListItemIcon> */}
+                        <ListItemText primary="Login" />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem key="5" disablePadding
+                    sx={{
+                        my: 2,
+                        color: 'white',
+                        display: 'block',
+                        mx: 2,
+                        position: 'relative', // Needed for the underline effect
+                        '&:hover': {
+                            color: '#2663eb',
+                            fontWeight: 600,
+                            transform: 'translateY(-3px)', // Slightly lift the text up
+                            transition: 'all 0.3s ease', // Smooth transition for the lift
+                        },
+                        '&:after': {
+                            content: '""',
+                            position: 'absolute',
+                            width: '100%',
+                            height: '3px', // Height of the underline
+                            bottom: 0,
+                            left: 0,
+                            background: 'linear-gradient(to right, #2663eb, #4facfe)', // Gradient underline
+                            transform: 'scaleX(0)',
+                            transition: 'transform 0.3s ease', // Animate the underline
+                            transformOrigin: 'bottom right',
+                        },
+                        '&:hover:after': {
+                            transform: 'scaleX(1)', // Show underline on hover
+                            transformOrigin: 'bottom left', // Animate from left to right
+                        }
+                    }}>
+                    <ListItemButton onClick={handleSignupClick}>
+                        {/* <ListItemIcon>
+                            <EmailIcon sx={{ color: '#fff' }} />
+                        </ListItemIcon> */}
+                        <ListItemText primary="Signup" />
+                    </ListItemButton>
+                </ListItem>
+           
             </List>
 
         </Box>
@@ -282,6 +318,7 @@ function Navbar() {
 
                     {/* Centered Nav Links */}
                     <Box sx={{ flexGrow: 1, display: isScreenSmall ? 'none' : 'flex', justifyContent: 'center' }}>
+                        
                         <Button
                             onClick={handleDashboardClick}
                             sx={{
@@ -389,111 +426,48 @@ function Navbar() {
                     </Box>
 
 
-                    <Box sx={{ flexGrow: 0, display: 'flex', justifyContent: 'flex-end', marginLeft: 'auto' }}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar sx={{ backgroundColor: '#2663eb', width: 46, height: 46 }}>
-                                    {getUserInitials(userDetails?.name || 'User')}
-                                </Avatar>
-                            </IconButton>
-                        </Tooltip>
-                        {/* <Menu
-                            sx={{ mt: '45px' }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
+                    <Box sx={{ flexGrow: 0, display: isScreenSmall ? 'none' : 'flex', justifyContent: 'flex-end', marginLeft: 'auto',gap:2 }}>
+                        <Link href="/auth/login">
+                        <Button 
+                            color="secondary"
+                            variant="contained"
+                            size="large"
+                            fullWidth
+                            sx={{backgroundColor:'#07153e'}}
                         >
-                            <MenuItem onClick={handleCloseUserMenu}>
-                                <Typography sx={{ textAlign: 'center' }}>Profile</Typography>
-                            </MenuItem>
-                            <MenuItem onClick={BackendLogout}>
-                                <Typography sx={{ textAlign: 'center' }}>Logout</Typography>
-                            </MenuItem>
-                        </Menu> */}
-                        <Menu
-                            id="msgs-menu"
-                            anchorEl={anchorElUser}
-                            keepMounted
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                            anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-                            transformOrigin={{ horizontal: "right", vertical: "top" }}
-                            sx={{
-                                "& .MuiMenu-paper": {
-                                    width: "360px",
-                                    p: '20px',
-                                    backgroundColor:'#242424'
-                                },
-                            }}
+                            Login
+                        </Button>
+                        </Link>
+                        <Link href="/auth/signup">
+                        <Button 
+                            color="secondary"
+                            variant="contained"
+                            size="large"
+                            fullWidth
                         >
-                            <Typography variant="h5" color="#fff">User Profile</Typography>
-                            <Stack direction="row" spacing={2} alignItems="center" mb={1}>
-                                <Avatar sx={{ backgroundColor: '#2663eb', width: 46, height: 46 }}>
-                                    {getUserInitials(userDetails?.name || 'User')}
-                                </Avatar>
-                                <Box>
-                                    <Typography
-                                        variant="subtitle2"
-                                        color="#fff"
-                                        fontWeight={600}
-                                    >
-                                        {userDetails?.name}
-                                    </Typography>
+                            Signup
+                        </Button>
+                        </Link>
 
-                                    <Box
-                                        display="flex"
-                                        alignItems="center"
-                                        gap={1}
-                                    >
-                                        {/* <IconMail width={15} height={15}  /> */}
-                                        <Tooltip title={userDetails?.email} placement="bottom" >
-                                            <Typography
-                                                variant="subtitle2"
-                                                color="#fff"
-                                                whiteSpace='nowrap'
-                                                overflow='hidden'
-                                                textOverflow='ellipsis'
-                                                width="230px"
-                                                sx={{
-                                                    cursor: 'pointer'
-                                                }}
-                                            >
-                                                {userDetails?.email}
-                                            </Typography>
-                                        </Tooltip>
+                    </Box>
 
-                                    </Box>
-                                </Box>
-                            </Stack>
-                            <Divider />
-                            <Box mt={2}>
-                                <Button
-                                    variant="outlined"
-                                    color="primary"
-                                    fullWidth
-                                    onClick={BackendLogout}
-                                    disabled={loading}
-                                >
-                                    {
-                                        loading
-                                            ?
-                                            <CircularProgress size={20} />
-                                            :
-                                            "Logout"
-                                    }
-                                </Button>
-                            </Box>
-                        </Menu>
+                    <Box sx={{ flexGrow: 0, display: isScreenSmall ? 'flex' : 'none', justifyContent: 'flex-end', marginLeft: 'auto',gap:2 }}>
+                    <Typography
+                        variant="h6"
+                        noWrap
+                        component="a"
+                        href="#"
+                        sx={{
+                            // mr: 2,
+                            fontFamily: 'monospace',
+                            fontWeight: 700,
+                            color: 'inherit',
+                            textDecoration: 'none',
+                        }}
+                    >
+                        PREPSTER AI
+                    </Typography>
+
                     </Box>
 
                 </Toolbar>
@@ -513,4 +487,4 @@ function Navbar() {
 
     );
 }
-export default Navbar;
+export default OuterNavbar;

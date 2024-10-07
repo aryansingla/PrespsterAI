@@ -22,7 +22,7 @@ import { ToastContainer } from "./nextToast";
 import 'react-toastify/dist/ReactToastify.css';
 import theme from "@/theme";
 
-export const MyApp = ({ children }: { children: React.ReactNode }) => {
+export const MyApp = ({ children }) => {
   // const theme = ThemeSettings();
   // const { open, message, variant, type } = useSelector(
   //   (state: AppState) => state.message
@@ -44,9 +44,6 @@ export const MyApp = ({ children }: { children: React.ReactNode }) => {
 export default function RootLayout({
   children,
   pageProps,
-}: {
-  children: React.ReactNode;
-  pageProps: any;
 }) {
   return (
     <html lang="en">

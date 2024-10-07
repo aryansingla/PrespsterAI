@@ -37,12 +37,12 @@ function AuthRegister() {
     const isScreenSmall = useMediaQuery('(max-width:600px)');
 
 
-    const handleNewPasswordChange = (event: any) => {
+    const handleNewPasswordChange = (event) => {
         setNewPassword(event.target.value);
     };
 
     const handleConfirmNewPasswordChange = (
-        event: ChangeEvent<HTMLInputElement>
+        event
     ) => {
         setConfirmNewPassword(event.target.value);
     };
@@ -52,16 +52,16 @@ function AuthRegister() {
         setCurrentError(res.errorMsgs);
     }, [newPassword]);
 
-    const handleNameChange = (e: any) => {
+    const handleNameChange = (e) => {
         setName(e.target.value);
     };
 
 
-    const handleEmailChange = (e: any) => {
+    const handleEmailChange = (e) => {
         setEmail(e.target.value);
     };
 
-    const handleFormSubmit = (val: any, setLoading: any) => {
+    const handleFormSubmit = (val, setLoading) => {
         setLoading(true);
         const requestOptions = {
             method: "POST",
@@ -142,7 +142,7 @@ function AuthRegister() {
                             .oneOf([Yup.ref("password"), null], "Password must match")
                             .required("Required"),
                     })}
-                    onSubmit={(values: object, { setSubmitting, setErrors }) =>
+                    onSubmit={(values, { setSubmitting, setErrors }) =>
                         handleFormSubmit(values, setSubmitting)
                     }
                 >

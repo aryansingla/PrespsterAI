@@ -10,7 +10,7 @@ import { styled, useTheme } from "@mui/material/styles";
 import { signOut, useSession } from "next-auth/react";
 import { CircularProgress } from "@mui/material";
 import { useRouter } from "next/navigation";
-import Navbar from "../_components/Navbar";
+import Navbar from "../_components/Navbar.jsx";
 
 
 const PageWrapper = styled("div")(() => ({
@@ -26,8 +26,6 @@ const PageWrapper = styled("div")(() => ({
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
 }) {
   
   

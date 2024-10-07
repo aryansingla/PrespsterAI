@@ -3,7 +3,7 @@ import { Box, Typography, useMediaQuery } from '@mui/material'
 import React from 'react'
 import OuterNavbar from './OuterNavbar'
 import { signOut, useSession } from "next-auth/react";
-import Navbar from './Navbar';
+import Navbar from './Navbar.jsx';
 
 
 const ContactComponent = () => {

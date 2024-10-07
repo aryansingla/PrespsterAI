@@ -41,7 +41,7 @@ const QuestionSection = ({ mockInterviewQuestion, activeQuestionIndex, setActive
             <Grid container spacing={2}>
               {
                 isMobileSmallScreen ?
-                mockInterviewQuestion.map((question: any, index: any) => (
+                mockInterviewQuestion.map((question, index) => (
                   <Grid size={{ xs: 2.5}} key={index}>
                     <Typography
                       onClick={() => setActiveQuestionIndex(index)}
@@ -60,7 +60,7 @@ const QuestionSection = ({ mockInterviewQuestion, activeQuestionIndex, setActive
                 ))
 
                 : 
-                mockInterviewQuestion.map((question: any, index: any) => (
+                mockInterviewQuestion.map((question, index) => (
                   <Grid size={{ xs: 6, sm: 4 }} key={index}>
                     <Typography
                       onClick={() => setActiveQuestionIndex(index)}

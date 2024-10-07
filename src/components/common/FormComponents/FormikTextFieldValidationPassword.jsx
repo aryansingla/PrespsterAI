@@ -1,18 +1,18 @@
 import React , {useState} from 'react'
 import { Field, connect, getIn } from 'formik'
 import { TextField } from 'formik-mui'
-import { Box , InputAdornment,IconButton,Tooltip } from '@mui/material'
+import { Box , InputAdornment,IconButton, Tooltip } from '@mui/material'
 import FormikErrorMessage from '../Heading/FormikErrorMessage'
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-const FormikTextFieldPassword = (props:any) => {
+const FormikTextFieldValidationPassword = (props) => {
     const error = getIn(props?.formik?.errors, props?.name)
     const touched = getIn(props?.formik?.touched, props?.name)
     const [showPassword, setShowPassword] = useState(false);
     const handleTogglePasswordVisibility = () => {
         setShowPassword(!showPassword);
       };
-      const handleKeyDown = (event: any) => {
+      const handleKeyDown = (event) => {
         if (event.key === ' ') {
             event.preventDefault(); // Prevent typing whitespace
         }
@@ -27,14 +27,12 @@ const FormikTextFieldPassword = (props:any) => {
                 label={<span>{props.label} {props.mandatory && <span style={{color : 'red'}}>*</span>}</span>}
                 autoComplete={props.autoComplete || 'off'}
                 value={props.value}
-                disabled={props.disabled}
                 onChange={props.handleChange}
                 onKeyDown={handleKeyDown}
                 placeholder={props.placeholder}
-                // InputLabelProps={{ shrink: true }} 
                 // title={props.label}
-                inputProps={props.inputProps}
                 type={showPassword ? "text" : "password"}
+                inputProps={props.inputProps}
                 // error={!!error}
                 // helperText={null}
                 sx={{
@@ -63,11 +61,9 @@ const FormikTextFieldPassword = (props:any) => {
                     ),
                   }}
             />
-            <FormikErrorMessage
-                title={ touched && error ? error : null}
-            />
+         
         </Box>
     )
 }
 
-export default connect(FormikTextFieldPassword)
+export default connect(FormikTextFieldValidationPassword)

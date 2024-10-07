@@ -11,7 +11,7 @@ const Feedback = ({ params }) => {
     const router = useRouter();
     const [feedBackList, setFeedBackList] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [expanded, setExpanded] = useState<number | null>(null);  // State for managing expanded panel (type is now number or null)
+    const [expanded, setExpanded] = useState(null);  // State for managing expanded panel (type is now number or null)
 
 
     const handleAccordionChange = (panel) => (event, isExpanded) => {
