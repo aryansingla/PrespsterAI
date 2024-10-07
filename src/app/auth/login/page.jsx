@@ -3,10 +3,18 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 
-// This is now a server-side component
+// This function needs to be async since getServerSession is asynchronous
 const Page = async () => {
-  // Fetch session data on the server
-  const session = await getServerSession(authOptions);
+  let session;
+
+  try {
+    // Try to fetch session data on the server side
+    session = await getServerSession(authOptions);
+  } catch (error) {
+    console.error("Error fetching session", error);
+    // Handle error in case fetching session fails
+    return <div>Error fetching session.</div>;
+  }
 
   // If the user is logged in, redirect them to the dashboard
   if (session?.user) {
