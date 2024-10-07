@@ -107,7 +107,7 @@ const Landingpage3 = () => {
                    
                     {
                         allTestimonials?.map((item,index)=>(
-                            <SliderBox style={{width:'90%'}}>
+                            <SliderBox style={{width:'90%'}} key={index}>
                             <Card sx={{
                                 p: '15px 25px',
                                 background: 'linear-gradient(180deg, #0f1422, #1e2837)',

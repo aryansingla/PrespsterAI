@@ -100,7 +100,7 @@ const InterviewSlugComponent = ({ params }) => {
                         WebkitTextFillColor: 'transparent', 
                     }}
                 >
-                    Let's Get Started
+                    Let us Get Started
                 </Typography>
 
                 {/* Conditionally render the image on tab screens and position it at the right */}
