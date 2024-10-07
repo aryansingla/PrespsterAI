@@ -102,7 +102,7 @@ const RecordAnswerSection = ({ mockInterviewQuestion, activeQuestionIndex, inter
             // Axios request options for submitting the user answer
             const requestOptions = {
                 method: "POST",
-                url: `http://localhost:5000/api/submit-answer`,
+                url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/submit-answer`,
                 data: {
                     mockId: interviewData?.mockId,
                     question: mockInterviewQuestion[activeQuestionIndex]?.question,

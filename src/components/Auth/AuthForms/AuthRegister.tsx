@@ -81,7 +81,7 @@ function AuthRegister() {
         setLoading(true);
         const requestOptions = {
             method: "POST",
-            url: `http://localhost:5000/api/auth/register`,
+            url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/register`,
             data: {
                 name: val.name,
                 email: val.email,
@@ -270,8 +270,8 @@ function AuthRegister() {
                     }}
                 </Formik>
             </Box>
-            <Divider sx={{ marginY: 3 }}>OR</Divider>
-            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            {/* <Divider sx={{ marginY: 3 }}>OR</Divider> */}
+            {/* <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <Button
                     variant="outlined"
                     disabled={loading}
@@ -295,7 +295,7 @@ function AuthRegister() {
                 >
                     Sign In with Google
                 </Button>
-            </Box>
+            </Box> */}
             <Stack
                 direction={isScreenSmall ? "column" : "row"}
                 spacing={1}

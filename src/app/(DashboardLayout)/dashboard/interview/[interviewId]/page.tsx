@@ -37,7 +37,7 @@ const page = ({ params }) => {
 
         const requestOptions = {
             method: "POST",
-            url: `http://localhost:5000/api/get-interview-details`,
+            url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/get-interview-details`,
             data: {
                 mockId: params.interviewId,
             },

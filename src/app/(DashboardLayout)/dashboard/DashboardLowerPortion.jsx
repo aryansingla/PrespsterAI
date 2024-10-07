@@ -42,7 +42,7 @@ const DashboardLowerPortion = () => {
         try {
             const requestOptions = {
                 method: 'GET',
-                url: `http://localhost:5000/api/user-interviews/${userDetails?.email}`,
+                url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user-interviews/${userDetails?.email}`,
             };
             axios(requestOptions)
                 .then((data) => {

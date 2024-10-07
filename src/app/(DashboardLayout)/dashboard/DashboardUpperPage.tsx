@@ -83,7 +83,7 @@ const DashboardUpperPage = () => {
 
         const requestOptions = {
             method: "POST",
-            url: `http://localhost:5000/api/create-interview`,
+            url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/create-interview`,
             data: {
                 jobPosition: jobPosition,
                 jobDescription: jobDescription,

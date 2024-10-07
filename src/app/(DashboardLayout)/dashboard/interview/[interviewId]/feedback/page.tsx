@@ -26,7 +26,7 @@ const Feedback = ({ params }) => {
         try {
             const requestOptions = {
                 method: "GET",
-                url: `http://localhost:5000/api/interview-feedback/${params.interviewId}`,
+                url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/interview-feedback/${params.interviewId}`,
             };
             axios(requestOptions)
                 .then((data) => {

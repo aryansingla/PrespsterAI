@@ -68,7 +68,7 @@ function AuthLogin() {
     const handleLogin = async () => {
         setLoading(true);
         try {
-            const response = await axios.post(`http://localhost:5000/api/auth/login`, {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/login`, {
                 email,
                 password,
             });
@@ -242,8 +242,8 @@ function AuthLogin() {
                     }}
                 </Formik>
             </Box>
-            <Divider sx={{ marginY: 3 }}>OR</Divider>
-            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            {/* <Divider sx={{ marginY: 3 }}>OR</Divider> */}
+            {/* <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <Button
                     variant="outlined"
                     disabled={loading}
@@ -267,7 +267,7 @@ function AuthLogin() {
                 >
                     Sign In with Google
                 </Button>
-            </Box>
+            </Box> */}
             <Stack
                 direction={isScreenSmall ? "column" : "row"}
                 spacing={1}
