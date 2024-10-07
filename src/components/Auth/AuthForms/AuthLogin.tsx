@@ -291,8 +291,21 @@ function AuthLogin() {
                 >
                     Sign Up
                 </Typography>
+                
             </Stack>
-
+            <Box sx={{textAlign:'center'}}>
+            <Typography
+                    component={Link}
+                    href="/"
+                    fontWeight="500"
+                    sx={{
+                        textDecoration: "none",
+                        color: "#2663eb",
+                    }}
+                >
+                    Go back to Welcome Page
+                </Typography>
+                </Box>
 
         </>
 

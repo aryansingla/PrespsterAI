@@ -74,6 +74,14 @@ function OuterNavbar() {
         router.push('/contact-us');
     }
 
+    const handleLoginClick = () => {
+        router.push('/auth/login');
+    }
+
+    const handleSignupClick = () => {
+        router.push('/auth/signup');
+    }
+
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
@@ -117,7 +125,7 @@ function OuterNavbar() {
                             transformOrigin: 'bottom left', // Animate from left to right
                         },
                     }}>
-                    <ListItemButton >
+                    <ListItemButton onClick={handleDashboardClick}>
                         <ListItemText primary="Dashboard" />
                     </ListItemButton>
                 </ListItem>
@@ -151,7 +159,7 @@ function OuterNavbar() {
                             transformOrigin: 'bottom left', // Animate from left to right
                         }
                     }}>
-                    <ListItemButton>
+                    <ListItemButton onClick={handlePricingClick}>
                         {/* <ListItemIcon>
                             <AttachMoneyIcon sx={{ color: '#fff' }} />
                         </ListItemIcon> */}
@@ -188,7 +196,7 @@ function OuterNavbar() {
                             transformOrigin: 'bottom left', // Animate from left to right
                         }
                     }}>
-                    <ListItemButton>
+                    <ListItemButton onClick={handleContactUsClick}>
                         {/* <ListItemIcon>
                             <EmailIcon sx={{ color: '#fff' }} />
                         </ListItemIcon> */}
@@ -225,7 +233,7 @@ function OuterNavbar() {
                             transformOrigin: 'bottom left', // Animate from left to right
                         }
                     }}>
-                    <ListItemButton>
+                    <ListItemButton onClick={handleLoginClick}>
                         {/* <ListItemIcon>
                             <EmailIcon sx={{ color: '#fff' }} />
                         </ListItemIcon> */}
@@ -262,7 +270,7 @@ function OuterNavbar() {
                             transformOrigin: 'bottom left', // Animate from left to right
                         }
                     }}>
-                    <ListItemButton>
+                    <ListItemButton onClick={handleSignupClick}>
                         {/* <ListItemIcon>
                             <EmailIcon sx={{ color: '#fff' }} />
                         </ListItemIcon> */}

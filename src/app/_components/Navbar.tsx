@@ -148,7 +148,7 @@ function Navbar() {
                         transformOrigin: 'bottom left', // Animate from left to right
                     },
                 }}>
-                    <ListItemButton >
+                    <ListItemButton onClick={handleDashboardClick}>
                         <ListItemText primary="Dashboard" />
                     </ListItemButton>
                 </ListItem>
@@ -182,7 +182,7 @@ function Navbar() {
                         transformOrigin: 'bottom left', // Animate from left to right
                     }
                 }}>
-                    <ListItemButton>
+                    <ListItemButton onClick={handlePricingClick}>
                         {/* <ListItemIcon>
                             <AttachMoneyIcon sx={{ color: '#fff' }} />
                         </ListItemIcon> */}
@@ -219,7 +219,7 @@ function Navbar() {
                         transformOrigin: 'bottom left', // Animate from left to right
                     }
                 }}>
-                    <ListItemButton>
+                    <ListItemButton onClick={handleContactUsClick}>
                         {/* <ListItemIcon>
                             <EmailIcon sx={{ color: '#fff' }} />
                         </ListItemIcon> */}
