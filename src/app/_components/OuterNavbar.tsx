@@ -31,6 +31,7 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import EmailIcon from '@mui/icons-material/Email';
 import CloseIcon from '@mui/icons-material/Close';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -46,6 +47,8 @@ function OuterNavbar() {
         setOpen(newOpen);
     };
 
+    const router = useRouter();
+
 
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -59,12 +62,24 @@ function OuterNavbar() {
         setAnchorElNav(null);
     };
 
+    const handleDashboardClick = () => {
+        router.push('/dashboard');
+    }
+
+    const handlePricingClick = () => {
+        router.push('/pricing');
+    }
+
+    const handleContactUsClick = () => {
+        router.push('/contact-us');
+    }
+
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
 
     const DrawerList = (
-        <Box sx={{ width: 300, height: '100%' }} role="presentation" onClick={toggleDrawer(false)}>
+        <Box sx={{ width: 280, height: '100%' }} role="presentation" onClick={toggleDrawer(false)}>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '30px', paddingX: '16px' }}>
                 <Typography sx={{ fontWeight: '600', color: '#fff', fontSize: '22px' }}>
                     PREPSTER AI
@@ -180,6 +195,81 @@ function OuterNavbar() {
                         <ListItemText primary="Contact Us" />
                     </ListItemButton>
                 </ListItem>
+                <ListItem key="4" disablePadding
+                    sx={{
+                        my: 2,
+                        color: 'white',
+                        display: 'block',
+                        mx: 2,
+                        position: 'relative', // Needed for the underline effect
+                        '&:hover': {
+                            color: '#2663eb',
+                            fontWeight: 600,
+                            transform: 'translateY(-3px)', // Slightly lift the text up
+                            transition: 'all 0.3s ease', // Smooth transition for the lift
+                        },
+                        '&:after': {
+                            content: '""',
+                            position: 'absolute',
+                            width: '100%',
+                            height: '3px', // Height of the underline
+                            bottom: 0,
+                            left: 0,
+                            background: 'linear-gradient(to right, #2663eb, #4facfe)', // Gradient underline
+                            transform: 'scaleX(0)',
+                            transition: 'transform 0.3s ease', // Animate the underline
+                            transformOrigin: 'bottom right',
+                        },
+                        '&:hover:after': {
+                            transform: 'scaleX(1)', // Show underline on hover
+                            transformOrigin: 'bottom left', // Animate from left to right
+                        }
+                    }}>
+                    <ListItemButton>
+                        {/* <ListItemIcon>
+                            <EmailIcon sx={{ color: '#fff' }} />
+                        </ListItemIcon> */}
+                        <ListItemText primary="Login" />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem key="5" disablePadding
+                    sx={{
+                        my: 2,
+                        color: 'white',
+                        display: 'block',
+                        mx: 2,
+                        position: 'relative', // Needed for the underline effect
+                        '&:hover': {
+                            color: '#2663eb',
+                            fontWeight: 600,
+                            transform: 'translateY(-3px)', // Slightly lift the text up
+                            transition: 'all 0.3s ease', // Smooth transition for the lift
+                        },
+                        '&:after': {
+                            content: '""',
+                            position: 'absolute',
+                            width: '100%',
+                            height: '3px', // Height of the underline
+                            bottom: 0,
+                            left: 0,
+                            background: 'linear-gradient(to right, #2663eb, #4facfe)', // Gradient underline
+                            transform: 'scaleX(0)',
+                            transition: 'transform 0.3s ease', // Animate the underline
+                            transformOrigin: 'bottom right',
+                        },
+                        '&:hover:after': {
+                            transform: 'scaleX(1)', // Show underline on hover
+                            transformOrigin: 'bottom left', // Animate from left to right
+                        }
+                    }}>
+                    <ListItemButton>
+                        {/* <ListItemIcon>
+                            <EmailIcon sx={{ color: '#fff' }} />
+                        </ListItemIcon> */}
+                        <ListItemText primary="Signup" />
+                    </ListItemButton>
+                </ListItem>
+           
             </List>
 
         </Box>
@@ -220,8 +310,9 @@ function OuterNavbar() {
 
                     {/* Centered Nav Links */}
                     <Box sx={{ flexGrow: 1, display: isScreenSmall ? 'none' : 'flex', justifyContent: 'center' }}>
+                        
                         <Button
-                            onClick={handleCloseNavMenu}
+                            onClick={handleDashboardClick}
                             sx={{
                                 my: 2,
                                 color: 'white',
@@ -256,7 +347,7 @@ function OuterNavbar() {
                         </Button>
 
                         <Button
-                            onClick={handleCloseNavMenu}
+                            onClick={handlePricingClick}
                             sx={{
                                 my: 2,
                                 color: 'white',
@@ -291,7 +382,7 @@ function OuterNavbar() {
                         </Button>
 
                         <Button
-                            onClick={handleCloseNavMenu}
+                            onClick={handleContactUsClick}
                             sx={{
                                 my: 2,
                                 color: 'white',
@@ -327,7 +418,7 @@ function OuterNavbar() {
                     </Box>
 
 
-                    <Box sx={{ flexGrow: 0, display: 'flex', justifyContent: 'flex-end', marginLeft: 'auto',gap:2 }}>
+                    <Box sx={{ flexGrow: 0, display: isScreenSmall ? 'none' : 'flex', justifyContent: 'flex-end', marginLeft: 'auto',gap:2 }}>
                         <Link href="/auth/login">
                         <Button 
                             color="secondary"
@@ -349,6 +440,25 @@ function OuterNavbar() {
                             Signup
                         </Button>
                         </Link>
+
+                    </Box>
+
+                    <Box sx={{ flexGrow: 0, display: isScreenSmall ? 'flex' : 'none', justifyContent: 'flex-end', marginLeft: 'auto',gap:2 }}>
+                    <Typography
+                        variant="h6"
+                        noWrap
+                        component="a"
+                        href="#"
+                        sx={{
+                            // mr: 2,
+                            fontFamily: 'monospace',
+                            fontWeight: 700,
+                            color: 'inherit',
+                            textDecoration: 'none',
+                        }}
+                    >
+                        PREPSTER AI
+                    </Typography>
 
                     </Box>
 

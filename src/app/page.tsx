@@ -9,7 +9,7 @@ import OuterFooter from './_components/OuterFooter'
 
 const Home = () => {
   return (
-    <Box>
+    <Box sx={{overflow:'hidden'}}>
       <Box sx={{
         position: 'fixed', 
         width: '100%', 

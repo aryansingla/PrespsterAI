@@ -30,6 +30,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import EmailIcon from '@mui/icons-material/Email';
 import CloseIcon from '@mui/icons-material/Close';
+import { useRouter } from 'next/navigation';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -44,6 +45,8 @@ function Navbar() {
     const toggleDrawer = (newOpen: boolean) => () => {
         setOpen(newOpen);
     };
+
+    const router = useRouter();
 
     const BackendLogout = async () => {
         setLoading(true)
@@ -93,6 +96,18 @@ function Navbar() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const handleDashboardClick = () => {
+        router.push('/dashboard');
+    }
+
+    const handlePricingClick = () => {
+        router.push('/pricing');
+    }
+
+    const handleContactUsClick = () => {
+        router.push('/contact-us');
+    }
 
     const DrawerList = (
         <Box sx={{ width: 300, backgroundColor: 'black', height: '100%' }} role="presentation" onClick={toggleDrawer(false)}>
@@ -252,7 +267,7 @@ function Navbar() {
                     {/* Centered Nav Links */}
                     <Box sx={{ flexGrow: 1, display: isScreenSmall ? 'none' : 'flex', justifyContent: 'center' }}>
                         <Button
-                            onClick={handleCloseNavMenu}
+                            onClick={handleDashboardClick}
                             sx={{
                                 my: 2,
                                 color: 'white',
@@ -287,7 +302,7 @@ function Navbar() {
                         </Button>
 
                         <Button
-                            onClick={handleCloseNavMenu}
+                            onClick={handlePricingClick}
                             sx={{
                                 my: 2,
                                 color: 'white',
@@ -322,7 +337,7 @@ function Navbar() {
                         </Button>
 
                         <Button
-                            onClick={handleCloseNavMenu}
+                            onClick={handleContactUsClick}
                             sx={{
                                 my: 2,
                                 color: 'white',

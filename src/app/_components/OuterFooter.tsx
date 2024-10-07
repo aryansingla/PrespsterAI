@@ -7,8 +7,11 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import Link from 'next/link';
 import MailIcon from '@mui/icons-material/Mail';
 import XIcon from '@mui/icons-material/X';
+import { useRouter } from 'next/navigation';
 
 const OuterFooter = () => {
+
+    const router = useRouter();
     const isMobileScreen = useMediaQuery('(max-width:600px)');
     const isTabScreen = useMediaQuery('(max-width:900px)');
     const isMdPoint = useMediaQuery('(max-width:1200px)');
@@ -17,7 +20,17 @@ const OuterFooter = () => {
     const isLargeScreen = useMediaQuery('(max-width:1800px)');
 
 
+    const handlePricingClick = () => {
+        router.push('/pricing');
+    }
 
+    const handleContactUsClick = () => {
+        router.push('/contact-us');
+    }
+
+    const handleTermsClick = () => {
+        router.push('/terms-and-conditions');
+    }
 
     return (
         <Box sx={{ backgroundColor: '#000', paddingTop: isMobileScreen ? '0px':'50px', paddingBottom: '120px' }}>
@@ -60,7 +73,9 @@ const OuterFooter = () => {
                                     transform: 'translateX(5px)',
                                     transition: 'all 0.3s ease',
                                 }
-                            }}>
+                            }}
+                            onClick = {handlePricingClick}
+                            >
                                 Pricing
                             </Typography>
                             <Typography sx={{
@@ -69,7 +84,9 @@ const OuterFooter = () => {
                                     transform: 'translateX(5px)',
                                     transition: 'all 0.3s ease',
                                 }
-                            }}>
+                            }}
+                            onClick={handleContactUsClick}
+                            >
                                 Contact Us
                             </Typography>
                         </Box>
@@ -86,7 +103,9 @@ const OuterFooter = () => {
                                     transform: 'translateX(5px)',
                                     transition: 'all 0.3s ease',
                                 }
-                            }}>
+                            }}
+                            onClick ={handleTermsClick}
+                            >
                                 Terms and Conditions
                             </Typography>
                         </Box>

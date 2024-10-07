@@ -3,6 +3,7 @@ import { Box, Button, Typography, useMediaQuery } from '@mui/material'
 import Grid from '@mui/material/Grid2';
 import React from 'react'
 import GppGoodIcon from '@mui/icons-material/GppGood';
+import Link from 'next/link';
 
 const Landingpage1 = () => {
     const isMobileScreen = useMediaQuery('(max-width:600px)');
@@ -155,7 +156,9 @@ const Landingpage1 = () => {
                 </Box>
 
                 <Box sx={{ width: isMobileScreen ? '90%' : isTabScreen ? '95%' : '65%',marginTop:'30px' }}>
+                <Link href="/auth/login">
                    <Button variant="contained" size="large" sx={{backgroundColor:'#2663eb',padding:'15px 30px'}}>Get Started </Button>
+                   </Link>
                 </Box>
 
             </Box>
