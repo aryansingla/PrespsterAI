@@ -1,7 +1,6 @@
 import LoginComponent from "./LoginComponent";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { redirect } from "next/navigation";
 
 // This function needs to be async since getServerSession is asynchronous
 const Page = async () => {
@@ -17,13 +16,11 @@ const Page = async () => {
   }
 
   // If the user is logged in, redirect them to the dashboard
-  if (session?.user) {
-    redirect("/dashboard");
-  }
+  
 
   return (
     <>
-      <LoginComponent />
+      <LoginComponent session={session} />
     </>
   );
 };

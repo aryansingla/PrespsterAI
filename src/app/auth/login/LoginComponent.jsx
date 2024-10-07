@@ -5,7 +5,10 @@ import {
 } from "@mui/material";
 import Login from "@/components/Auth/Login";
 
-const LoginComponent = () => {
+const LoginComponent = ({session}) => {
+    if (session?.user) {
+        redirect("/dashboard");
+      }
     return (
         <Box
           sx={{

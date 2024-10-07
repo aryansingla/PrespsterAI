@@ -12,9 +12,6 @@ const Landingpage4 = () => {
     const isMediumScreen = useMediaQuery('(max-width:1500px)');
     const isLargeScreen = useMediaQuery('(max-width:1800px)');
 
-
-
-
     return (
         <Box sx={{ backgroundColor: '#000', paddingTop: '50px', paddingBottom: isMobileScreen ? '50px':'120px' }}>
             <Box sx={{
