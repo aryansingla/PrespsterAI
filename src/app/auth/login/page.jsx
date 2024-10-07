@@ -1,5 +1,6 @@
 import {
     Box,
+    Typography,
   } from "@mui/material";
   import { Metadata } from "next";
   import { headers } from "next/headers";
@@ -35,7 +36,8 @@ import {
       //   <Login/>
       // </Box>
       <>
-      login page
+      <Typography sx={{color:'#fff'}}>login page</Typography>
+      
       </>
     );
   }
