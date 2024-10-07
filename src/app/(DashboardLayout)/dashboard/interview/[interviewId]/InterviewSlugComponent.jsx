@@ -12,7 +12,7 @@ import Grid from '@mui/material/Grid2';
 import Image from 'next/image'
 
 
-const page = ({ params }) => {
+const InterviewSlugComponent = ({ params }) => {
     const isMediumScreen = useMediaQuery('(max-width:1450px)');
     const isTabScreen = useMediaQuery('(max-width:1200px)');
     const isSecondMediumScreen = useMediaQuery('(max-width:900px)');
@@ -285,4 +285,4 @@ const page = ({ params }) => {
     )
 }
 
-export default page
+export default InterviewSlugComponent
