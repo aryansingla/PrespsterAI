@@ -1,4 +1,3 @@
-import React from 'react'
 import {
     Box,
     Typography,
@@ -10,7 +9,11 @@ import {
   
 //   export default async function Login2() {
     
-//     
+//     const data = await getServerSession(authOptions);
+  
+//     if (data?.user) {
+//       redirect("/dashboard");
+//     }
     
 //     return (
 //       // <Box
@@ -38,33 +41,13 @@ import {
 //   }
   
   
+import React from 'react'
 
-
-const page = async () => {
-  const data = await getServerSession(authOptions);
-  
-    if (data?.user) {
-      redirect("/dashboard");
-    }
+const page = () => {
   return (
     <>
-    <Box
-        sx={{
-          position: "relative",
-          "&:before": {
-            content: '""',
-            background: "black",
-            backgroundSize: "400% 400%",
-            animation: "gradient 15s ease infinite",
-            position: "absolute",
-            height: "100%",
-            width: "100%",
-            opacity: "0.3",
-          },
-        }}
-      >
-        <Login/>
-      </Box>
+    <div style={{color:'#000'}}>Login</div>
+    <div style={{color:'#fff'}}>Login</div>
     </>
 
   )
