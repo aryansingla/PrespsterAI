@@ -1,22 +1,15 @@
+"use client"
 import LoginComponent from "./LoginComponent";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { useSession } from "next-auth/react";
 
 // This function needs to be async since getServerSession is asynchronous
-const Page = async () => {
-  let session;
+const Page = () => {
+  // const session = await getServerSession(authOptions);
+  const { data: session, status } = useSession()
 
-  try {
-    // Try to fetch session data on the server side
-    session = await getServerSession(authOptions);
-  } catch (error) {
-    console.error("Error fetching session", error);
-    // Handle error in case fetching session fails
-    return <div>Error fetching session.</div>;
-  }
-
-  // If the user is logged in, redirect them to the dashboard
-  
+  console.log("Session",session);
 
   return (
     <>
@@ -26,3 +19,21 @@ const Page = async () => {
 };
 
 export default Page;
+
+// export async function getServerSideProps(context) {
+//   const session = await getServerSession(context.req, context.res, authOptions)
+//   if (!session) {
+//     return {
+//         redirect: {
+//             destination: '/',
+//             permanent: false,
+//         }
+//     }
+//   }
+
+//   return {
+//     props: {
+//         session,
+//     }
+//   }
+// }

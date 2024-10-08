@@ -4,10 +4,12 @@ import {
     Box,
 } from "@mui/material";
 import Login from "@/components/Auth/Login";
+import { useRouter } from 'next/navigation';
 
 const LoginComponent = ({session}) => {
+    const router = useRouter();
     if (session?.user) {
-        redirect("/dashboard");
+        router.push("/dashboard");
       }
     return (
         <Box
