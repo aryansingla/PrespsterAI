@@ -36,7 +36,8 @@ const PricingComponent = () => {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                margin: 'auto'
+                margin: 'auto',
+                paddingBottom:'30px'
             }}
             >
                 <Box sx={{marginTop:'20px'}}>
@@ -67,7 +68,7 @@ const PricingComponent = () => {
                                 Basic Plan
                             </Typography>
                             <Typography sx={{ color: '#bbb', fontSize: '45px' }}>
-                                Price: $9.99/month
+                                 $9.99/month
                             </Typography>
 
                             {/* Features or other information */}
@@ -104,7 +105,7 @@ const PricingComponent = () => {
                                 Pro Plan
                             </Typography>
                             <Typography sx={{ color: '#bbb', fontSize: '45px' }}>
-                                Price: $24.99/month
+                                 $24.99/month
                             </Typography>
 
                             {/* Features or other information */}
@@ -144,7 +145,7 @@ const PricingComponent = () => {
                                 Premium Plan
                             </Typography>
                             <Typography sx={{ color: '#bbb', fontSize: '45px' }}>
-                                Price: $49.99/month
+                                 $49.99/month
                             </Typography>
 
                             {/* Features or other information */}
