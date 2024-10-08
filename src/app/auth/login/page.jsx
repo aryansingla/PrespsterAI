@@ -9,7 +9,7 @@ const Page = () => {
   // const session = await getServerSession(authOptions);
   const { data: session, status } = useSession()
 
-  console.log("Session",session);
+  // console.log("Session",session);
 
   return (
     <>
