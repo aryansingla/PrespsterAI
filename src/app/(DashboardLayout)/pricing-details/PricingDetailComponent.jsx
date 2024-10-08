@@ -16,7 +16,7 @@ const PricingDetailComponent = () => {
 
   return (
     <Box>
-            <Box sx={{
+             <Box sx={{
                 textAlign: 'center',
                 display: 'flex',
                 flexDirection: 'column',
@@ -42,7 +42,7 @@ const PricingDetailComponent = () => {
                         p: '0px 25px',
                         background: 'linear-gradient(180deg, #0f1422, #1e2837)',
                         borderRadius: '20px',
-                        height: isMobileScreen ? '500px' : isTabScreen ? '400px' : isLargeScreen ? '400px' : '400px',
+                        height: isMobileScreen ? '450px' : isTabScreen ? '400px' : isLargeScreen ? '400px' : '400px',
                         overflow: 'hidden',
                         width: isMobileScreen ? '20rem' :'30rem',
                         textAlign: 'center', // Add this for the card-level centering
@@ -57,7 +57,7 @@ const PricingDetailComponent = () => {
                             </Typography>
 
                             {/* Features or other information */}
-                            <Box sx={{ marginTop: '20px' }}>
+                            <Box sx={{ marginTop: '20px',textAlign: isMobileScreen ? 'left':'center' }}>
                                 <Typography gutterBottom sx={{ color: '#fff', fontSize: '20px' }}>
                                     - 5 mock interviews/month
                                 </Typography>
@@ -67,7 +67,7 @@ const PricingDetailComponent = () => {
                                 <Typography gutterBottom sx={{ color: '#fff', fontSize: '20px' }}>
                                     - Basic analytics
                                 </Typography>
-                                <Typography gutterBottom sx={{ color: '#8dbdeb', fontSize: '20px', marginTop:'20px' }}>
+                                <Typography gutterBottom sx={{ color: '#8dbdeb', fontSize: '20px', marginTop:'20px', display:isMobileScreen?'none':'initial' }}>
                                 Ideal for individuals just starting out in their careers, or those wanting to practice for entry-level roles.
                                 </Typography>
                             </Box>
@@ -79,7 +79,7 @@ const PricingDetailComponent = () => {
                         p: '0px 25px',
                         background: 'linear-gradient(180deg, #0f1422, #1e2837)',
                         borderRadius: '20px',
-                        height: isMobileScreen ? '500px' : isTabScreen ? '400px' : isLargeScreen ? '400px' : '400px',
+                        height: isMobileScreen ? '450' : isTabScreen ? '400px' : isLargeScreen ? '400px' : '400px',
                         overflow: 'hidden',
                         width: isMobileScreen ? '20rem' :'30rem',
                         textAlign: 'center', // Add this for the card-level centering
@@ -94,7 +94,7 @@ const PricingDetailComponent = () => {
                             </Typography>
 
                             {/* Features or other information */}
-                            <Box sx={{ marginTop: '20px' }}>
+                            <Box sx={{ marginTop: '20px',textAlign: isMobileScreen ? 'left':'center' }}>
                                 <Typography gutterBottom sx={{ color: '#fff', fontSize: '20px' }}>
                                     - 15 mock interviews/month
                                 </Typography>
@@ -107,7 +107,7 @@ const PricingDetailComponent = () => {
                                 <Typography gutterBottom sx={{ color: '#fff', fontSize: '20px' }}>
                                     - Advanced analytics on strengths and weaknesses
                                 </Typography>
-                                <Typography gutterBottom sx={{ color: '#8dbdeb', fontSize: '20px', marginTop:'20px' }}>
+                                <Typography gutterBottom sx={{ color: '#8dbdeb', fontSize: '20px', marginTop:'20px',display:isMobileScreen?'none':'initial'  }}>
                                 Perfect for professionals preparing for mid-level positions or aiming to refine their interviewing skills.
                                 </Typography>
                             </Box>
@@ -119,7 +119,7 @@ const PricingDetailComponent = () => {
                         p: '0px 25px',
                         background: 'linear-gradient(180deg, #0f1422, #1e2837)',
                         borderRadius: '20px',
-                        height: isMobileScreen ? '750px' : isTabScreen ? '550px' : isLargeScreen ? '550px' : '550px',
+                        height: isMobileScreen ? '600px' : isTabScreen ? '550px' : isLargeScreen ? '550px' : '550px',
                         overflow: 'hidden',
                         width: isMobileScreen ? '20rem' :'30rem',
                         textAlign: 'center', // Add this for the card-level centering
@@ -134,7 +134,7 @@ const PricingDetailComponent = () => {
                             </Typography>
 
                             {/* Features or other information */}
-                            <Box sx={{ marginTop: '20px' }}>
+                            <Box sx={{ marginTop: '20px' , textAlign: isMobileScreen ? 'left':'center' }}>
                                 <Typography gutterBottom sx={{ color: '#fff', fontSize: '20px' }}>
                                     - 15 mock interviews/month
                                 </Typography>
@@ -153,7 +153,7 @@ const PricingDetailComponent = () => {
                                 <Typography gutterBottom sx={{ color: '#fff', fontSize: '20px' }}>
                                     - Downloadable performance reports
                                 </Typography>
-                                <Typography gutterBottom sx={{ color: '#8dbdeb', fontSize: '20px', marginTop:'20px' }}>
+                                <Typography gutterBottom sx={{ color: '#8dbdeb', fontSize: '20px', marginTop:'20px',display:isMobileScreen?'none':'initial'  }}>
                                 Tailored for professionals preparing for senior-level roles or individuals looking to perfect their interviewing technique across multiple industries.
                                 </Typography>
                             </Box>
