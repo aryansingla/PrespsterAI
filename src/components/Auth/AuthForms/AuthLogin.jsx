@@ -193,7 +193,7 @@ function AuthLogin() {
                                             />
                                         </Grid>
                                     </Grid>
-                                    <Stack
+                                    {/* <Stack
                                         justifyContent="flex-end"
                                         direction="row"
                                         alignItems="center"
@@ -211,7 +211,7 @@ function AuthLogin() {
                                         >
                                             Forgot Password ?
                                         </Typography>
-                                    </Stack>
+                                    </Stack> */}
                                     <Box>
                                         <Button
                                             // color="primary"
