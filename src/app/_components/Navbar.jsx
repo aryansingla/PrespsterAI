@@ -59,7 +59,7 @@ function Navbar() {
         setLoading(true)
         const requestOptions = {
             method: "POST",
-            url: `http://localhost:3000/api/auth/logout/`,
+            url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/auth/logout/`,
             data: {},
         };
         axios(requestOptions)
@@ -67,12 +67,12 @@ function Navbar() {
                 await signOut()
                     .then(() => {
                         setLoading(false)
-                        window.location.replace('http://localhost:3000/auth/login');
+                        window.location.replace(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/login`);
                     })
                     .catch((error) => {
                         setLoading(false);
                         console.log(error);
-                        window.location.replace('http://localhost:3000/auth/login');
+                        window.location.replace(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/login`);
                     })
             })
             .catch(async (error) => {
@@ -80,11 +80,11 @@ function Navbar() {
                 await signOut()
                     .then(() => {
                         setLoading(false)
-                        window.location.replace('http://localhost:3000/auth/login');
+                        window.location.replace(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/login`);
                     })
                     .catch(() => {
                         setLoading(false)
-                        window.location.replace('http://localhost:3000/auth/login');
+                        window.location.replace(`${process.env.NEXT_PUBLIC_FRONTEND_URL}/auth/login`);
                     })
             });
     };
