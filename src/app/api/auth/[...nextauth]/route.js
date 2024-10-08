@@ -20,13 +20,13 @@ const authOptions = {
         })
     ],
     callbacks : {
-        jwt : ({token, user}) => {
+        async jwt({token, user}) {
             if(token && token.expires && token.expires < Date.now()){
                 delete token.expires
             }
             return { ...token, ...user}
         },
-        session : ({ session, token, user}) =>  {
+        async session({ session, token, user}){
             session.user = token;
             return session;
         }
