@@ -109,11 +109,11 @@ function Navbar() {
     }
 
     const handlePricingClick = () => {
-        router.push('/pricing');
+        router.push('/pricing-details');
     }
 
     const handleContactUsClick = () => {
-        router.push('/contact-us');
+        router.push('/contact-us-details');
     }
 
     const getUserInitials = (name) => {

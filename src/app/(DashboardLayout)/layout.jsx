@@ -19,7 +19,7 @@ const PageWrapper = styled("div")(() => ({
   paddingBottom: "60px",
   flexDirection: "column",
   zIndex: 1,
-  backgroundColor: "transparent",
+  backgroundColor: "#000",
   width: "100%",
   // overflow: "hidden",
 }));
@@ -65,7 +65,7 @@ export default function RootLayout({
         display: "flex",
         minHeight: "100vh",
         width: "100%",
-        backgroundColor:'black'
+        backgroundColor:'#000'
       }}
     >
       {
