@@ -13,19 +13,19 @@ const LoginComponent = ({session}) => {
       }
     return (
         <Box
-          sx={{
-            position: "relative",
-            "&:before": {
-              content: '""',
-              background: "black",
-              backgroundSize: "400% 400%",
-              animation: "gradient 15s ease infinite",
-              position: "absolute",
-              height: "100%",
-              width: "100%",
-              opacity: "0.3",
-            },
-          }}
+        //   sx={{
+        //     position: "relative",
+        //     "&:before": {
+        //       content: '""',
+        //       background: "black",
+        //       backgroundSize: "400% 400%",
+        //       animation: "gradient 15s ease infinite",
+        //       position: "absolute",
+        //       height: "100%",
+        //       width: "100%",
+        //       opacity: "0.3",
+        //     },
+        //   }}
         >
           <Login />
         </Box>

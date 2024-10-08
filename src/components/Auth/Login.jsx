@@ -20,7 +20,7 @@ function Login({ user }) {
       spacing={0}
       justifyContent="center"
       alignItems="center" 
-      sx={{ height: "100vh" }}
+      // sx={{ height: "100vh" }}
     >
       <Grid
         size={{ xs: 11, sm: 11, lg: 6, xl: 6 }}
