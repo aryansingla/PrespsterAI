@@ -4,7 +4,7 @@ import ContactComponent from '../_components/ContactComponent'
 
 const page = () => {
   return (
-    <Box>
+    <Box sx={{backgroundColor:'#000'}}>
         <ContactComponent/>
     </Box>
   )

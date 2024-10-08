@@ -4,7 +4,7 @@ import TermsConditions from '../_components/TermsConditions'
 
 const page = () => {
   return (
-    <Box>
+    <Box sx={{backgroundColor:'#000'}}>
         <TermsConditions/>
     </Box>
   )

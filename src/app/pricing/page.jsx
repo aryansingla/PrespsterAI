@@ -4,7 +4,7 @@ import PricingComponent from '../_components/PricingComponent'
 
 const page = () => {
   return (
-    <Box> 
+    <Box sx={{backgroundColor:'#000'}}> 
    <PricingComponent/>
     </Box>
   )

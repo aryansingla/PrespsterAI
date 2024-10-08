@@ -3,6 +3,7 @@ import LoginComponent from "./LoginComponent";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { useSession } from "next-auth/react";
+import { Box } from "@mui/material";
 
 // This function needs to be async since getServerSession is asynchronous
 const Page = () => {
@@ -12,9 +13,9 @@ const Page = () => {
   // console.log("Session",session);
 
   return (
-    <>
+    <Box sx={{backgroundColor:'#000'}}>
       <LoginComponent session={session} />
-    </>
+    </Box>
   );
 };
 
