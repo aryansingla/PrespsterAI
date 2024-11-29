@@ -30,8 +30,8 @@ import { toast } from "react-toastify";
 function AuthLogin() {
     //   const API_URL = getApiUrl();
     const router = useRouter();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("demo@gmail.com");
+    const [password, setPassword] = useState("Demo@123");
     const [loading, setLoading] = useState(false);
     const [forgotPasswordUrl, setForgotPasswordUrl] = useState("");
     const isScreenSmall = useMediaQuery('(max-width:600px)');
@@ -136,6 +136,8 @@ function AuthLogin() {
                 <Typography variant="h5" sx={{ fontWeight: '600' }}>PREPSTER AI</Typography>
                 <Typography variant="h5" sx={{ marginTop: '15px', textAlign: 'left' }}>Login</Typography> {/* Keeping the 'Login' text left-aligned */}
                 <Typography variant={isScreenSmall ? "subtitle2" : "subtitle1"} sx={{ fontWeight: '200', textAlign: 'left', fontSize: isScreenSmall? '15px' : 'inherit' }}>Unlock Your Potential – Login to Continue</Typography>
+                <Typography variant={isScreenSmall ? "subtitle2" : "subtitle1"} sx={{ fontWeight: '200', textAlign: 'left', fontSize: isScreenSmall? '15px' : 'inherit', color:'green' }}>For Demo Purpose GUest Credentials are already provided.</Typography>
+            
             </Box>
             <Box sx={{ marginTop: '15px' }}>
                 <Formik
