@@ -120,7 +120,7 @@ const ContactComponent = () => {
                                     textAlign: 'left',
                                 }}
                             >
-                                contactprepsterai@gmail.com@gmail.com
+                                contactprepsterai@gmail.com
                             </Typography>
                         </Box>
 

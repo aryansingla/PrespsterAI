@@ -202,7 +202,7 @@ const TermsConditions = () => {
 
                             </Typography>
                             <Box component="ol" sx={{ color: '#fff', fontSize: '18px', paddingLeft: '20px', marginTop: '10px', listStyleType: 'decimal', textAlign: 'left' }}>
-                                <li>Send an email to our customer support team at contactprepsterai@gmail.com@gmail.com within 7 days of purchase.</li>
+                                <li>Send an email to our customer support team at contactprepsterai@gmail.com within 7 days of purchase.</li>
                                 <li>Provide your name, order number, and the reason for the refund request.</li>
                                 <li>We will review your request and notify you of the approval or rejection of your refund.</li>
                                 <li>If your refund is approved, it will be processed, and a credit will be applied to your original method of payment within a certain number of days.</li>

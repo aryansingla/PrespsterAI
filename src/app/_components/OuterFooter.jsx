@@ -53,7 +53,7 @@ const OuterFooter = () => {
                                     textDecoration: 'underline',
                                     cursor: 'default'
                                 } }}>
-                                    contactprepsterai@gmail.com@gmail.com
+                                    contactprepsterai@gmail.com
                                 </Typography>
                             </Box>
                         </Box>
