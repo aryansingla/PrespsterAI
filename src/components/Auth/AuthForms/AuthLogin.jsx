@@ -136,7 +136,7 @@ function AuthLogin() {
                 <Typography variant="h5" sx={{ fontWeight: '600' }}>PREPSTER AI</Typography>
                 <Typography variant="h5" sx={{ marginTop: '15px', textAlign: 'left' }}>Login</Typography> {/* Keeping the 'Login' text left-aligned */}
                 <Typography variant={isScreenSmall ? "subtitle2" : "subtitle1"} sx={{ fontWeight: '200', textAlign: 'left', fontSize: isScreenSmall? '15px' : 'inherit' }}>Unlock Your Potential – Login to Continue</Typography>
-                <Typography variant={isScreenSmall ? "subtitle2" : "subtitle1"} sx={{ fontWeight: '200', textAlign: 'left', fontSize: isScreenSmall? '15px' : 'inherit', color:'green' }}>For Demo Purpose GUest Credentials are already provided.</Typography>
+                <Typography variant={isScreenSmall ? "subtitle2" : "subtitle1"} sx={{ fontWeight: '200', textAlign: 'left', fontSize: isScreenSmall? '15px' : 'inherit', color:'green' }}>For Demo Purpose Guest Credentials are already provided.</Typography>
             
             </Box>
             <Box sx={{ marginTop: '15px' }}>
