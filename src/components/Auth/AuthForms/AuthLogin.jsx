@@ -1,5 +1,5 @@
 "use client";
-import React,{ useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
     Box,
     Typography,
@@ -7,7 +7,8 @@ import {
     Stack,
     Container,
     CircularProgress,
-    useMediaQuery
+    useMediaQuery,
+    Alert
 } from "@mui/material";
 import Grid from '@mui/material/Grid2';
 
@@ -26,6 +27,8 @@ import FormikTextFieldPassword from "@/components/common/FormComponents/FormikTe
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 // import Image from "next/image";
+import CheckIcon from '@mui/icons-material/Check';
+
 
 function AuthLogin() {
     //   const API_URL = getApiUrl();
@@ -135,9 +138,11 @@ function AuthLogin() {
             <Box sx={{ textAlign: 'center' }}> {/* Changed to 'center' */}
                 <Typography variant="h5" sx={{ fontWeight: '600' }}>PREPSTER AI</Typography>
                 <Typography variant="h5" sx={{ marginTop: '15px', textAlign: 'left' }}>Login</Typography> {/* Keeping the 'Login' text left-aligned */}
-                <Typography variant={isScreenSmall ? "subtitle2" : "subtitle1"} sx={{ fontWeight: '200', textAlign: 'left', fontSize: isScreenSmall? '15px' : 'inherit' }}>Unlock Your Potential – Login to Continue</Typography>
-                <Typography variant={isScreenSmall ? "subtitle2" : "subtitle1"} sx={{ fontWeight: '200', textAlign: 'left', fontSize: isScreenSmall? '15px' : 'inherit', color:'green' }}>For Demo Purpose Guest Credentials are already provided.</Typography>
-            
+                <Typography variant={isScreenSmall ? "subtitle2" : "subtitle1"} sx={{ fontWeight: '200', textAlign: 'left', fontSize: isScreenSmall ? '15px' : 'inherit' }}>Unlock Your Potential – Login to Continue</Typography>
+                {/* <Typography variant={isScreenSmall ? "subtitle2" : "subtitle1"} sx={{ fontWeight: '200', textAlign: 'left', fontSize: isScreenSmall ? '15px' : 'inherit', color: 'green' }}>For Demo Purpose Guest Credentials are already provided.</Typography> */}
+                <Alert severity="info" sx={{textAlign:'left'}}>
+                For Demo Purpose Guest Credentials are already provided.
+                </Alert>
             </Box>
             <Box sx={{ marginTop: '15px' }}>
                 <Formik
@@ -289,10 +294,10 @@ function AuthLogin() {
                 >
                     Sign Up
                 </Typography>
-                
+
             </Stack>
-            <Box sx={{textAlign:'center'}}>
-            <Typography
+            <Box sx={{ textAlign: 'center' }}>
+                <Typography
                     component={Link}
                     href="/"
                     fontWeight="500"
@@ -303,7 +308,7 @@ function AuthLogin() {
                 >
                     Go back to Welcome Page
                 </Typography>
-                </Box>
+            </Box>
 
         </>
 
