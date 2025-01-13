@@ -65,10 +65,11 @@ const DashboardUpperPage = () => {
         setLoading(true);
         console.log(jobPosition, jobDescription, jobExperience);
 
-        const inputPrompt = `Job Position: ${jobPosition}, Job Description: ${jobDescription}, Job Experience: ${jobExperience} , based on given information above give ${process.env.NEXT_PUBLIC_INTERVIEW_QUESTION_COUNT} interview questions of advanced techincal level and  give both question and their answers in JSON format, Give us question and answer field on JSON`;
+        const inputPrompt = `Job Position: ${jobPosition}, Job Description: ${jobDescription}, Job Experience: ${jobExperience} , based on given information above give ${process.env.NEXT_PUBLIC_INTERVIEW_QUESTION_COUNT} interview questions of advanced technical level and  give both question and their answers in JSON format, Give us question and answer field on JSON`;
 
         const result = await chatSession.sendMessage(inputPrompt);
         const responseText = await result.response.text();
+        console.log('response text', responseText);
         const MockJsonResponse = responseText.replace(/```json/g, '')
             .replace(/```/g, '')
             .replace(/[\n\r\t]/g, '');
